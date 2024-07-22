@@ -4,17 +4,31 @@ import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Brando Vidal">
   <main>
     <section class="w-full lg:w-[748px] mx-auto py-44 px-8">
-      <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">
-        Hey soy Brando Vidal <a href="https://www.linkedin.com/in/brandovidal" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center">
+      <div class="flex items-center pb-4 gap-4">
+        <img
+          src="https://unavatar.io/brandovidal"
+          class="rounded-full w-16 h-16"
+          alt="brandovidal Profile"
+        />
+        <a
+          href="https://www.linkedin.com/in/brandovidal"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex justify-center items-center"
+        >
           <Badge>Disponible para trabajar</Badge>
         </a>
+      </div>
+
+      <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">
+        Brando Vidal
       </h1>
-      <h3 class="text-2xl opacity-80">
-        +5 años de experiencia. Desarrollador web en Lima, Peru 🚀.
-        Especializado en aplicaciones novedosas.
+      <h3 class="text-2xl text-wrap">
+        <span>+5 años de experiencia.</span><span class="text-purple-200/90 mx-2">AWS Developer Associate | Fullstack Developer.</span>
+        <span class="">Especializado en aplicaciones novedosas 🚀.</span>
       </h3>
     </section>
   </main>
