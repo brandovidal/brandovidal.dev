@@ -2,19 +2,20 @@
 import Layout from "../layouts/Layout.astro";
 
 import Badge from "../components/Badge.astro";
-
-import Linkedin from "../icons/Linkedin.astro";
 import SocialPill from "../components/SocialPill.astro";
-import Github from "../icons/Github.astro";
+
+import LinkedinIcon from "../icons/Linkedin.astro";
+import GithubIcon from "../icons/Github.astro";
+import FIlePdfIcon from "../icons/FIlePdf.astro";
 ---
 
-<Layout title="Brando Vidal">
+<Layout title="Brando Vidal - AWS Developer Associate | Fullstack Developer" description="Contacta conmigo para hablar o desarrollar tu idea.">
   <main>
     <section class="w-full lg:w-[748px] mx-auto py-44 px-8">
       <div class="flex items-center pb-4 gap-4">
         <img
           src="https://unavatar.io/brandovidal"
-          class="rounded-full w-16 h-16"
+          class="rounded-full size-16"
           alt="brandovidal Profile"
         />
         <a
@@ -23,7 +24,7 @@ import Github from "../icons/Github.astro";
           rel="noopener noreferrer"
           class="flex justify-center items-center"
         >
-          <Badge>Disponible para trabajar</Badge>
+          <Badge>Abierto a ofertas laborales</Badge>
         </a>
       </div>
 
@@ -38,14 +39,18 @@ import Github from "../icons/Github.astro";
         <span class="">Especializado en aplicaciones novedosas 🚀.</span>
       </h2>
 
-      <nav class="flex gap-x-2 pt-4">
+      <nav class="flex gap-x-4 mt-8">
           <SocialPill href="https://www.linkedin.com/in/brandovidal">
-            <Linkedin class="w-6 h-6" />
+            <LinkedinIcon class="size-6" />
             Linkedin
           </SocialPill>
           <SocialPill href="https://github.com/brandovidal">
-            <Github class="w-6 h-6" />
+            <GithubIcon class="size-6" />
             Github
+          </SocialPill>
+          <SocialPill href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view">
+            <FIlePdfIcon  class="size-6" />
+            Resumen
           </SocialPill>
       </nav>
     </section>
