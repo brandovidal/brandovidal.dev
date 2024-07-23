@@ -5,6 +5,7 @@ import Badge from "../components/Badge.astro";
 
 import Linkedin from "../icons/Linkedin.astro";
 import SocialPill from "../components/SocialPill.astro";
+import Github from "../icons/Github.astro";
 ---
 
 <Layout title="Brando Vidal">
@@ -22,7 +23,7 @@ import SocialPill from "../components/SocialPill.astro";
           rel="noopener noreferrer"
           class="flex justify-center items-center"
         >
-          <Badge>Disponible para trabajar</Badge>
+          <!-- <Badge>Disponible para trabajar</Badge> -->
         </a>
       </div>
 
@@ -37,14 +38,16 @@ import SocialPill from "../components/SocialPill.astro";
         <span class="">Especializado en aplicaciones novedosas 🚀.</span>
       </h2>
 
-      <ul>
-        <li>
+      <nav class="flex gap-x-2 pt-4">
           <SocialPill href="https://www.linkedin.com/in/brandovidal">
             <Linkedin class="w-6 h-6" />
             Linkedin
           </SocialPill>
-        </li>
-      </ul>
+          <SocialPill href="https://github.com/brandovidal">
+            <Github class="w-6 h-6" />
+            Github
+          </SocialPill>
+      </nav>
     </section>
   </main>
 </Layout>
