@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 
 import Badge from "../components/Badge.astro";
+
+import Linkedin from "../icons/Linkedin.astro";
+import SocialPill from "../components/SocialPill.astro";
 ---
 
 <Layout title="Brando Vidal">
@@ -26,10 +29,22 @@ import Badge from "../components/Badge.astro";
       <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">
         Brando Vidal
       </h1>
-      <h3 class="text-2xl text-wrap">
-        <span>+5 años de experiencia.</span><span class="text-purple-200/90 mx-2">AWS Developer Associate | Fullstack Developer.</span>
+      <h2 class="text-2xl text-wrap">
+        <span>+5 años de experiencia.</span><span
+          class="text-purple-200/90 mx-2"
+          >AWS Developer Associate | Fullstack Developer.</span
+        >
         <span class="">Especializado en aplicaciones novedosas 🚀.</span>
-      </h3>
+      </h2>
+
+      <ul>
+        <li>
+          <SocialPill href="https://www.linkedin.com/in/brandovidal">
+            <Linkedin class="w-6 h-6" />
+            Linkedin
+          </SocialPill>
+        </li>
+      </ul>
     </section>
   </main>
 </Layout>
