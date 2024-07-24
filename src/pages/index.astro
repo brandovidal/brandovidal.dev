@@ -1,17 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
 
 import Badge from "../components/Badge.astro";
 import SocialPill from "../components/SocialPill.astro";
+import Experience from "../components/Experience.astro";
 
 import LinkedinIcon from "../icons/Linkedin.astro";
 import GithubIcon from "../icons/Github.astro";
 import FIlePdfIcon from "../icons/FIlePdf.astro";
+import BriefcaseIcon from "../icons/Briefcase.astro";
 ---
 
 <Layout title="Brando Vidal - AWS Developer Associate | Fullstack Developer" description="Contacta conmigo para hablar o desarrollar tu idea.">
   <main>
-    <section class="w-full lg:w-[748px] mx-auto py-44 px-8">
+    <SectionContainer class="py-44 pb-24">
       <div class="flex items-center pb-4 gap-4">
         <img
           src="https://unavatar.io/brandovidal"
@@ -53,6 +56,13 @@ import FIlePdfIcon from "../icons/FIlePdf.astro";
             Resumen
           </SocialPill>
       </nav>
-    </section>
+    </Section>
+
+    <SectionContainer id="experience">
+      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
+        <BriefcaseIcon />
+        Experiencia Laboral</h2>
+      <Experience />
+    </SectionContainer>
   </main>
 </Layout>
