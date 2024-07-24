@@ -12,10 +12,13 @@ import FIlePdfIcon from "../icons/FIlePdf.astro";
 import BriefcaseIcon from "../icons/Briefcase.astro";
 ---
 
-<Layout title="Brando Vidal - AWS Developer Associate | Fullstack Developer" description="Contacta conmigo para hablar o desarrollar tu idea.">
-  <main>
-    <SectionContainer class="py-44 pb-24">
-      <div class="flex items-center pb-4 gap-4">
+<Layout
+  title="Brando Vidal - AWS Developer Associate | Fullstack Developer"
+  description="Contacta conmigo para hablar o desarrollar tu idea."
+>
+  <main class="px-4 sm:px-8">
+    <SectionContainer class="py-32 pb-24">
+      <div class="flex items-center pb-4 gap-x-4">
         <img
           src="https://unavatar.io/brandovidal"
           class="rounded-full size-16"
@@ -31,37 +34,42 @@ import BriefcaseIcon from "../icons/Briefcase.astro";
         </a>
       </div>
 
-      <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">
+      <h1
+        class="text-white text-3xl md:text-4xl lg:text-5xl font-bold pb-6 lg:pb-10"
+      >
         Brando Vidal
       </h1>
-      <h2 class="text-2xl text-wrap">
+      <h2 class="text-lg md:text-xl lg:text-2xl text-wrap max-w-[700px]">
         <span>+5 años de experiencia.</span><span
           class="text-purple-200/90 mx-2"
           >AWS Developer Associate | Fullstack Developer.</span
         >
-        <span class="">Especializado en aplicaciones novedosas 🚀.</span>
+        <span class="">Especializado en crear aplicaciones novedosas 🚀.</span>
       </h2>
 
-      <nav class="flex gap-x-4 mt-8">
-          <SocialPill href="https://www.linkedin.com/in/brandovidal">
-            <LinkedinIcon class="size-6" />
-            Linkedin
-          </SocialPill>
-          <SocialPill href="https://github.com/brandovidal">
-            <GithubIcon class="size-6" />
-            Github
-          </SocialPill>
-          <SocialPill href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view">
-            <FIlePdfIcon  class="size-6" />
-            Resumen
-          </SocialPill>
+      <nav class="flex flex-wrap gap-4 mt-8">
+        <SocialPill href="https://www.linkedin.com/in/brandovidal">
+          <LinkedinIcon class="size-4 lg:size-6" />
+          Linkedin
+        </SocialPill>
+        <SocialPill href="https://github.com/brandovidal">
+          <GithubIcon class="size-4 lg:size-6" />
+          Github
+        </SocialPill>
+        <SocialPill
+          href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view"
+        >
+          <FIlePdfIcon class="size-4 lg:size-6" />
+          Resumen
+        </SocialPill>
       </nav>
-    </Section>
+    </SectionContainer>
 
     <SectionContainer id="experience">
       <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
         <BriefcaseIcon />
-        Experiencia Laboral</h2>
+        Experiencia Laboral
+      </h2>
       <Experience />
     </SectionContainer>
   </main>
