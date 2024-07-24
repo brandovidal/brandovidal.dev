@@ -5,16 +5,18 @@ const EXPERIENCES = [
   {
     title: "Frontend Engineer",
     description:
-      "Abordo proyectos transversales dentro del ecosistema.",
-    date: "Jul 2024 - Present",
-    link: "https://www.linkedin.com/in/brandovidal/",
+      "Abordo proyectos transversales dia a dia, para lograr la mejor arquitectura moderna, escalable y mantenible.",
+    company: "Yape",
+    date: "Jul 2024 - Presente",
+    link: "https://yape.com.pe/",
   },
   {
     title: "Fullstack Engineer",
+    company: "Samishop",
     description:
-      "All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.",
+      "Constantemente desarrollaba funcionalidades bajo demanda en el mundo ecommerce, siempre focalizado en mejorar la experiencia del usuario final.",
     date: "Sep 2022 - Jun 2024",
-  }
+  },
 ];
 ---
 
@@ -24,6 +26,7 @@ const EXPERIENCES = [
       <li class="mb-10 ms-4">
         <ExperienceItem
           title={experience.title}
+          company={experience.company}
           description={experience.description}
           date={experience.date}
           link={experience.link}
