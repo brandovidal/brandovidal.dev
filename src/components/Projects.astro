@@ -1,0 +1,83 @@
+---
+import SocialPill from "./SocialPill.astro";
+
+import AstroIcon from "../icons/AstroIcon.astro";
+import ShadcnIcon from "../icons/Shadcn.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+
+import GithubIcon from "../icons/Github.astro";
+import LinkIcon from "../icons/Link.astro";
+
+const TAGS = {
+  ASTRO: {
+    name: "Astro",
+    class: "bg-orange-600 text-white",
+    icon: AstroIcon,
+  },
+  SHADCN: {
+    name: "Shadcn UI",
+    class: "bg-white text-black",
+    icon: ShadcnIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-teal-700 text-white",
+    icon: TailwindIcon,
+  },
+  TYPESCRIPT: {
+    name: "Typescript",
+    class: "bg-blue-500 text-white",
+    icon: AstroIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    name: "Bittyurl",
+    description:
+      "Cortador de URL gratuito. Creado con tecnologías modernas como Astro, Shadcn UI y Tailwind CSS.",
+    url: "https://bittyurl.netlify.app/",
+    githubUrl: "https://github.com/brandovidal/bittyurl",
+    imageUrl: "/projects/bittyurl.webp",
+    tags: [TAGS.ASTRO, TAGS.SHADCN, TAGS.TAILWIND],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ name, description, url, githubUrl, imageUrl, tags }) => (
+    <article class="flex flex-col-reverse sm:grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="flex flex-col gap-y-3">
+        <h3 class="text-2xl font-semibold text-purple-200">{name}</h3>
+        <p class="text-md md:text-lg text-pretty">{description}</p>
+        <div class="flex flex-row gap-x-4">
+          <SocialPill href={url}>
+            <LinkIcon class="size-4 lg:size-6" />
+            Visitar
+          </SocialPill>
+
+          <SocialPill href={githubUrl}>
+            <GithubIcon class="size-4 lg:size-6" />
+            C&oacute;digo
+          </SocialPill>
+        </div>
+      </div>
+      <div class="flex flex-col gap-y-4">
+        <img
+          src={imageUrl}
+          alt={`Captura de pantalla de ${name}`}
+          class="max-w-lg md:max-w-md lg:w-full rounded-xl shadow-2xl shadow-white/10 aspect-16/9 "
+        />
+        <ul class="flex flex-row gap-x-4 mb-4">
+          {tags.map((tag) => (
+            <li
+              class={`flex justify-center items-center gap-x-1 rounded-full py-1 px-2 text-xs font-light ${tag.class}`}
+            >
+              <tag.icon class="size-4" /> {tag.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  ))
+}
