@@ -23,14 +23,14 @@ const EXPERIENCES = [
 
 <ol class="relative border-s border-gray-700 ml-3">
   {
-    EXPERIENCES.map((experience) => (
+    EXPERIENCES.map(({ title, company, description, date, link }) => (
       <li class="mb-10 ms-4">
         <ExperienceItem
-          title={experience.title}
-          company={experience.company}
-          description={experience.description}
-          date={experience.date}
-          link={experience.link}
+          title={title}
+          company={company}
+          description={description}
+          date={date}
+          link={link}
         />
       </li>
     ))

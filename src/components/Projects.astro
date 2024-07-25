@@ -1,0 +1,59 @@
+---
+import AstroIcon from "../icons/AstroIcon.astro";
+import ShadcnIcon from "../icons/Shadcn.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+
+const TAGS = {
+  ASTRO: {
+    name: "Astro",
+    class: "bg-orange-600 text-white",
+    icon: AstroIcon,
+  },
+  SHADCN: {
+    name: "Shadcn UI",
+    class: "bg-gray-800 text-white",
+    icon: ShadcnIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-teal-700 text-white",
+    icon: TailwindIcon,
+  },
+  TYPESCRIPT: {
+    name: "Typescript",
+    class: "bg-blue-500 text-white",
+    icon: AstroIcon,
+  },
+};
+
+const PROJECTS = [
+  {
+    name: "Bittyurl",
+    description:
+      "Cortador de URL gratuito. Creado con tecnologías modernas como Astro, Shadcn UI y Tailwind CSS.",
+    url: "https://bittyurl.netlify.app/",
+    github: "https://github.com/brandovidal/bittyurl",
+    imageUrl: "/projects/bittyurl.webp",
+    tags: [TAGS.ASTRO, TAGS.SHADCN, TAGS.TAILWIND],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ name, description, url, github, imageUrl, tags }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-purple-200 mb-2">{name}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-4 mb-4">
+        {tags.map((tag) => (
+          <li class={`inline-flex items-center rounded px-2 text-sm font-light ${tag.class}`}><tag.icon class="size-4" /> {tag.name}</li>
+        ))}
+      </ul>
+      <img
+        src={imageUrl}
+        alt={`Captura de pantalla de ${name}`}
+        class="rounded shadow-2xl shadow-white/10"
+      />
+    </article>
+  ))
+}
