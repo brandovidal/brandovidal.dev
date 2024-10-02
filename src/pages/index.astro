@@ -12,6 +12,7 @@ import GithubIcon from "../icons/Github.astro";
 import FilePdfIcon from "../icons/FilePdf.astro";
 import GitMergeIcon from "../icons/GitMerge.astro";
 import CodeIcon from "../icons/Code.astro";
+import PersonIcon from "../icons/PersonIcon.astro";
 ---
 
 <Layout
@@ -59,7 +60,7 @@ import CodeIcon from "../icons/Code.astro";
           Github
         </SocialPill>
         <SocialPill
-          href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view"
+          href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view?usp=drive_link"
         >
           <FilePdfIcon class="size-4 lg:size-6" />
           Resumen
@@ -80,6 +81,20 @@ import CodeIcon from "../icons/Code.astro";
         Proyectos
       </h2>
       <Projects />
+    </SectionContainer>
+    <SectionContainer id="resume">
+      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
+        <PersonIcon />
+        Sobre mi
+      </h2>
+
+      <p class="text-md md:text-lg text-pretty leading-relaxed">
+        Desarrollador Fullstack con 5 años de experiencia involucrado en todo el
+        ciclo de vida de un proyecto. Mi especialidad es implementar soluciones
+        de IT usando Javascript, ReactJS, Node.JS, AWS, Python, Kotlin. Me gusta
+        aplicar buenas practicas, testing y automatizar tareas, me ancanta los
+        nuevos retos para seguir mejorando profesionalmente.
+      </p>
     </SectionContainer>
   </main>
 </Layout>
