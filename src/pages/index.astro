@@ -13,6 +13,24 @@ import FilePdfIcon from "../icons/FilePdf.astro";
 import GitMergeIcon from "../icons/GitMerge.astro";
 import CodeIcon from "../icons/Code.astro";
 import PersonIcon from "../icons/PersonIcon.astro";
+
+const SOCIAL_MEDIAS = [
+  {
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/brandovidal",
+    icon: LinkedinIcon,
+  },
+  {
+    name: "Github",
+    href: "https://github.com/brandovidal",
+    icon: GithubIcon,
+  },
+  {
+    name: "Resumen",
+    href: "https://pub-f58ba5761f03439babd2963d9a9fe027.r2.dev/BrandoVidalCV.pdf",
+    icon: FilePdfIcon,
+  },
+];
 ---
 
 <Layout
@@ -51,20 +69,14 @@ import PersonIcon from "../icons/PersonIcon.astro";
       </h2>
 
       <nav class="flex flex-wrap gap-4 mt-8">
-        <SocialPill href="https://www.linkedin.com/in/brandovidal">
-          <LinkedinIcon class="size-4 lg:size-6" />
-          Linkedin
-        </SocialPill>
-        <SocialPill href="https://github.com/brandovidal">
-          <GithubIcon class="size-4 lg:size-6" />
-          Github
-        </SocialPill>
-        <SocialPill
-          href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view?usp=drive_link"
-        >
-          <FilePdfIcon class="size-4 lg:size-6" />
-          Resumen
-        </SocialPill>
+        {
+          SOCIAL_MEDIAS.map(({ name, href, icon: Icon }) => (
+            <SocialPill href={href}>
+              <Icon class="size-4 lg:size-6" />
+              {name}
+            </SocialPill>
+          ))
+        }
       </nav>
     </SectionContainer>
 
@@ -92,14 +104,15 @@ import PersonIcon from "../icons/PersonIcon.astro";
         Desarrollador Fullstack con 5 años de experiencia involucrado en todo el
         ciclo de vida de un proyecto. Mi especialidad es implementar soluciones
         de IT usando <span
-        class="text-purple-400/90 dark:text-purple-200/90 mx-1"
-        >Javascript, ReactJS, Node.JS, AWS, Python, Kotlin.</span>
+          class="text-purple-400/90 dark:text-purple-200/90 mx-1"
+          >Javascript, ReactJS, Node.JS, AWS, Python, Kotlin.</span
+        >
       </p>
       <p class="text-md md:text-lg text-pretty leading-relaxed">
         Me gusta aplicar <span
-        class="text-purple-400/90 dark:text-purple-200/90 mx-1"
-        >buenas practicas, testing y automatizar tareas</span>, me
-        encanta los nuevos retos para seguir mejorando profesionalmente.
+          class="text-purple-400/90 dark:text-purple-200/90 mx-1"
+          >buenas practicas, testing y automatizar tareas</span
+        >, me encanta los nuevos retos para seguir mejorando profesionalmente.
       </p>
     </SectionContainer>
   </main>
