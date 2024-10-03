@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SectionContainer from "../components/SectionContainer.astro";
+
+import Experience from "../sections/experience/Experience.astro";
+import Project from "../sections/project/Project.astro";
+import About from "../sections/about/About.astro";
 
 import Badge from "../components/Badge.astro";
 import SocialPill from "../components/SocialPill.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
+import SectionContainer from "../components/SectionContainer.astro";
 
 import LinkedinIcon from "../icons/LinkedinIcon.astro";
 import GithubIcon from "../icons/GithubIcon.astro";
@@ -38,7 +40,7 @@ const SOCIAL_MEDIAS = [
   description="Contacta conmigo para hablar o desarrollar tu idea."
 >
   <main class="px-4 sm:px-8">
-    <SectionContainer class="py-32">
+    <SectionContainer id="resume" class="py-32">
       <div class="flex items-center pb-4 gap-x-4">
         <img
           src="https://unavatar.io/brandovidal"
@@ -92,7 +94,7 @@ const SOCIAL_MEDIAS = [
         <CodeIcon />
         Proyectos
       </h2>
-      <Projects />
+      <Project />
     </SectionContainer>
     <SectionContainer id="about">
       <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
@@ -100,20 +102,7 @@ const SOCIAL_MEDIAS = [
         Sobre mi
       </h2>
 
-      <p class="text-md md:text-lg text-pretty leading-relaxed mb-4">
-        Desarrollador Fullstack con 5 años de experiencia involucrado en todo el
-        ciclo de vida de un proyecto. Mi especialidad es implementar soluciones
-        de IT usando <span
-          class="text-purple-400/90 dark:text-purple-200/90 mx-1"
-          >Javascript, ReactJS, Node.JS, AWS, Python, Kotlin.</span
-        >
-      </p>
-      <p class="text-md md:text-lg text-pretty leading-relaxed">
-        Me gusta aplicar <span
-          class="text-purple-400/90 dark:text-purple-200/90 mx-1"
-          >buenas practicas, testing y automatizar tareas</span
-        >, me encanta los nuevos retos para seguir mejorando profesionalmente.
-      </p>
+      <About />
     </SectionContainer>
   </main>
 </Layout>
