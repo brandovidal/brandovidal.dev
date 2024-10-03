@@ -1,71 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import Resume from "../sections/resume/resume.astro";
+import Experience from "../sections/experience/Experience.astro";
+import Project from "../sections/project/Project.astro";
+import About from "../sections/about/About.astro";
+
 import SectionContainer from "../components/SectionContainer.astro";
 
-import Badge from "../components/Badge.astro";
-import SocialPill from "../components/SocialPill.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-
-import LinkedinIcon from "../icons/Linkedin.astro";
-import GithubIcon from "../icons/Github.astro";
-import FilePdfIcon from "../icons/FilePdf.astro";
-import GitMergeIcon from "../icons/GitMerge.astro";
-import CodeIcon from "../icons/Code.astro";
+import GitMergeIcon from "../icons/GitMergeIcon.astro";
+import CodeIcon from "../icons/CodeIcon.astro";
 import PersonIcon from "../icons/PersonIcon.astro";
 ---
 
 <Layout
   title="Brando Vidal - AWS Developer Associate | Fullstack Developer"
-  description="Contacta conmigo para hablar o desarrollar tu idea."
+  description="Contacta conmigo para desarrollar tu idea."
 >
   <main class="px-4 sm:px-8">
-    <SectionContainer class="py-32">
-      <div class="flex items-center pb-4 gap-x-4">
-        <img
-          src="https://unavatar.io/brandovidal"
-          class="rounded-full size-16"
-          alt="brandovidal Profile"
-        />
-        <a
-          href="https://www.linkedin.com/in/brandovidal"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex justify-center items-center"
-        >
-          <Badge>Abierto a ofertas laborales</Badge>
-        </a>
-      </div>
-
-      <h1
-        class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold pb-6 lg:pb-10"
-      >
-        Brando Vidal
-      </h1>
-      <h2 class="text-lg md:text-xl lg:text-2xl text-wrap max-w-[700px]">
-        <span>+5 años de experiencia. </span><span
-          class="text-purple-400/90 dark:text-purple-200/90 mx-2"
-          >AWS Developer Associate | Fullstack Developer.</span
-        >
-        <span class="">Especializado en crear aplicaciones novedosas 🚀.</span>
-      </h2>
-
-      <nav class="flex flex-wrap gap-4 mt-8">
-        <SocialPill href="https://www.linkedin.com/in/brandovidal">
-          <LinkedinIcon class="size-4 lg:size-6" />
-          Linkedin
-        </SocialPill>
-        <SocialPill href="https://github.com/brandovidal">
-          <GithubIcon class="size-4 lg:size-6" />
-          Github
-        </SocialPill>
-        <SocialPill
-          href="https://drive.google.com/file/d/1TqfiMkY4yxOZB_TpL-9U9Zbx957uUSLO/view?usp=drive_link"
-        >
-          <FilePdfIcon class="size-4 lg:size-6" />
-          Resumen
-        </SocialPill>
-      </nav>
+    <SectionContainer id="resume" class="py-32">
+      <Resume />
     </SectionContainer>
 
     <SectionContainer id="experience">
@@ -80,27 +34,15 @@ import PersonIcon from "../icons/PersonIcon.astro";
         <CodeIcon />
         Proyectos
       </h2>
-      <Projects />
+      <Project />
     </SectionContainer>
-    <SectionContainer id="about">
+    <SectionContainer id="about-me">
       <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
         <PersonIcon />
         Sobre mi
       </h2>
 
-      <p class="text-md md:text-lg text-pretty leading-relaxed mb-4">
-        Desarrollador Fullstack con 5 años de experiencia involucrado en todo el
-        ciclo de vida de un proyecto. Mi especialidad es implementar soluciones
-        de IT usando <span
-        class="text-purple-400/90 dark:text-purple-200/90 mx-1"
-        >Javascript, ReactJS, Node.JS, AWS, Python, Kotlin.</span>
-      </p>
-      <p class="text-md md:text-lg text-pretty leading-relaxed">
-        Me gusta aplicar <span
-        class="text-purple-400/90 dark:text-purple-200/90 mx-1"
-        >buenas practicas, testing y automatizar tareas</span>, me
-        encanta los nuevos retos para seguir mejorando profesionalmente.
-      </p>
+      <About />
     </SectionContainer>
   </main>
 </Layout>
