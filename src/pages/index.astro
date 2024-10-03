@@ -1,38 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import Resume from "../sections/resume/resume.astro";
 import Experience from "../sections/experience/Experience.astro";
 import Project from "../sections/project/Project.astro";
 import About from "../sections/about/About.astro";
 
-import Badge from "../components/Badge.astro";
-import SocialPill from "../components/SocialPill.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 
-import LinkedinIcon from "../icons/LinkedinIcon.astro";
-import GithubIcon from "../icons/GithubIcon.astro";
-import FilePdfIcon from "../icons/FilePdfIcon.astro";
 import GitMergeIcon from "../icons/GitMergeIcon.astro";
 import CodeIcon from "../icons/CodeIcon.astro";
 import PersonIcon from "../icons/PersonIcon.astro";
-
-const SOCIAL_MEDIAS = [
-  {
-    name: "Linkedin",
-    href: "https://www.linkedin.com/in/brandovidal",
-    icon: LinkedinIcon,
-  },
-  {
-    name: "Github",
-    href: "https://github.com/brandovidal",
-    icon: GithubIcon,
-  },
-  {
-    name: "Resumen",
-    href: "https://pub-f58ba5761f03439babd2963d9a9fe027.r2.dev/BrandoVidalCV.pdf",
-    icon: FilePdfIcon,
-  },
-];
 ---
 
 <Layout
@@ -41,45 +19,8 @@ const SOCIAL_MEDIAS = [
 >
   <main class="px-4 sm:px-8">
     <SectionContainer id="resume" class="py-32">
-      <div class="flex items-center pb-4 gap-x-4">
-        <img
-          src="https://unavatar.io/brandovidal"
-          class="rounded-full size-16"
-          alt="brandovidal Profile"
-        />
-        <a
-          href="https://www.linkedin.com/in/brandovidal"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex justify-center items-center"
-        >
-          <Badge>Abierto a ofertas laborales</Badge>
-        </a>
-      </div>
 
-      <h1
-        class="text-gray-900 dark:text-white text-3xl md:text-4xl lg:text-5xl font-bold pb-6 lg:pb-10"
-      >
-        Brando Vidal
-      </h1>
-      <h2 class="text-lg md:text-xl lg:text-2xl text-wrap max-w-[700px]">
-        <span>+5 años de experiencia. </span><span
-          class="text-purple-400/90 dark:text-purple-200/90 mx-2"
-          >AWS Developer Associate | Fullstack Developer.</span
-        >
-        <span class="">Especializado en crear aplicaciones novedosas 🚀.</span>
-      </h2>
-
-      <nav class="flex flex-wrap gap-4 mt-8">
-        {
-          SOCIAL_MEDIAS.map(({ name, href, icon: Icon }) => (
-            <SocialPill href={href}>
-              <Icon class="size-4 lg:size-6" />
-              {name}
-            </SocialPill>
-          ))
-        }
-      </nav>
+      <Resume />
     </SectionContainer>
 
     <SectionContainer id="experience">
