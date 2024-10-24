@@ -12,6 +12,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://brandovidal.dev',
   integrations: [tailwind(), webVitals(), db(), sitemap()],
   output: 'hybrid',
   adapter: cloudflare()
