@@ -8,9 +8,11 @@ import db from "@astrojs/db";
 
 import cloudflare from '@astrojs/cloudflare';
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), webVitals(), db()],
+  integrations: [tailwind(), webVitals(), db(), sitemap()],
   output: 'hybrid',
   adapter: cloudflare()
 });
