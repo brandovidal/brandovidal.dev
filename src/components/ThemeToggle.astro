@@ -1,17 +1,21 @@
 ---
-// Theme toggle component with terminal aesthetic
+const THEME_TOGGLE_CLASS =
+  "font-mono text-xs border border-white/10 rounded bg-white/2 backdrop-blur-sm px-3 py-1.5 hover:bg-white/5 transition-colors duration-300 text-gray-400 hover:text-white";
 ---
 
-<button
-  id="theme-toggle"
-  class="font-mono text-xs border border-white/10 rounded bg-white/[0.02] backdrop-blur-sm px-3 py-1.5 hover:bg-white/5 transition-colors duration-300 text-gray-400 hover:text-white"
-  aria-label="Toggle theme"
->
-  <span class="inline-block">$ theme <span id="theme-label" class="text-amber-400">dark</span></span>
+<button id="theme-toggle" class={THEME_TOGGLE_CLASS} aria-label="Toggle theme">
+  <span class="inline-block"
+    >$ theme <span id="theme-label" class="text-amber-400">dark</span></span
+  >
 </button>
 
 <script>
-  import { initTheme, setTheme, getCurrentTheme, onThemeChange } from '../stores/themeStore';
+  import {
+    initTheme,
+    setTheme,
+    getCurrentTheme,
+    onThemeChange,
+  } from "../stores/themeStore";
 
   // Initialize theme on page load
   initTheme();
@@ -19,10 +23,10 @@
   // Update label based on current theme
   function updateLabel() {
     const current = getCurrentTheme();
-    const label = document.getElementById('theme-label');
+    const label = document.getElementById("theme-label");
     if (label) {
       label.textContent = current;
-      label.className = current === 'dark' ? 'text-amber-400' : 'text-blue-400';
+      label.className = current === "dark" ? "text-amber-400" : "text-blue-400";
     }
   }
 
@@ -30,11 +34,11 @@
   onThemeChange(updateLabel);
 
   // Handle click
-  const toggle = document.getElementById('theme-toggle');
+  const toggle = document.getElementById("theme-toggle");
   if (toggle) {
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener("click", () => {
       const current = getCurrentTheme();
-      setTheme(current === 'dark' ? 'light' : 'dark');
+      setTheme(current === "dark" ? "light" : "dark");
     });
   }
 

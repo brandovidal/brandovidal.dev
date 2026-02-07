@@ -27,25 +27,42 @@ const { title, description } = Astro.props;
     {/* Theme initialization - runs before page render to prevent flash */}
     <script is:inline>
       (function () {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored === 'light' ? 'light' : stored === 'dark' ? 'dark' : prefersDark ? 'dark' : 'light';
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const theme =
+          stored === "light"
+            ? "light"
+            : stored === "dark"
+              ? "dark"
+              : prefersDark
+                ? "dark"
+                : "light";
 
-        if (theme === 'light') {
-          document.documentElement.classList.add('light');
+        if (theme === "light") {
+          document.documentElement.classList.add("light");
         } else {
-          document.documentElement.classList.remove('light');
+          document.documentElement.classList.remove("light");
         }
       })();
     </script>
   </head>
   <body>
     {/* Fixed gradient background - spans entire viewport height */}
-    <div class="fixed inset-0 z-[-2] w-full h-full bg-neutral-950 dark:bg-neutral-950 light:bg-white overflow-hidden">
+    <div
+      class="fixed inset-0 z-[-2] w-full h-full bg-neutral-950 dark:bg-neutral-950 light:bg-[var(--color-surface-base)] overflow-hidden"
+    >
       {/* Top radial gradient - purple glow from data layer */}
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.15),transparent_50%)] light:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.05),transparent_50%)]"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.15),transparent_50%)] light:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.05),transparent_50%)]"
+      >
+      </div>
       {/* Bottom gradient - depth layer */}
-      <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-purple-950/20 to-transparent dark:from-purple-950/20 light:from-purple-100/30"></div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-purple-950/20 to-transparent dark:from-purple-950/20 light:from-purple-100/30"
+      >
+      </div>
     </div>
 
     <Header />
@@ -58,14 +75,14 @@ const { title, description } = Astro.props;
   html {
     font-family: "Onest Variable", system-ui, sans-serif;
     scroll-behavior: smooth;
-    background-color: #0a0a0a;
-    color: white;
+    background-color: var(--color-surface-base);
+    color: var(--color-text-primary);
     height: 100%;
   }
 
   html.light {
-    background-color: #fafafa;
-    color: #0a0a0a;
+    background-color: var(--color-surface-base);
+    color: var(--color-text-primary);
   }
 
   body {
