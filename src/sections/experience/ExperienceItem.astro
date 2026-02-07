@@ -6,19 +6,21 @@ interface Props {
   title: string;
   company: string;
   description: string;
+  descriptionKey?: string;
   date: string;
+  dateKey?: string;
   link?: string;
   layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
   technologies: string[];
 }
-const { title, company, description, date, link, layers, technologies } = Astro.props;
+const { title, company, description, descriptionKey, date, dateKey, link, layers, technologies } = Astro.props;
 ---
 
 <article class="border border-white/10 rounded-lg bg-white/[0.02] backdrop-blur-sm p-6 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300">
   <div class="flex flex-col gap-4">
     {/* Date and title */}
     <div>
-      <time class="text-xs font-mono text-gray-500 uppercase tracking-wider">{date}</time>
+      <time class="text-xs font-mono text-gray-500 uppercase tracking-wider" data-i18n-key={dateKey}>{date}</time>
       <h3 class="text-xl font-semibold text-white mt-2">{title}</h3>
       <a
         href={link || '#'}
@@ -36,7 +38,7 @@ const { title, company, description, date, link, layers, technologies } = Astro.
     </div>
 
     {/* Description */}
-    <p class="text-sm text-gray-400 leading-relaxed text-pretty">
+    <p class="text-sm text-gray-400 leading-relaxed text-pretty" data-i18n-key={descriptionKey}>
       {description}
     </p>
 

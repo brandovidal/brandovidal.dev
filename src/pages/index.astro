@@ -31,7 +31,7 @@ const lang = 'en' as 'en' | 'es';
           <GitMergeIcon />
           <span data-i18n-experience-title>{lang === 'es' ? 'Experiencia' : 'Experience'}</span>
         </h2>
-        <Experience />
+        <Experience {lang} />
       </div>
     </SectionContainer>
 
@@ -41,7 +41,7 @@ const lang = 'en' as 'en' | 'es';
           <CodeIcon />
           <span data-i18n-projects-title>{lang === 'es' ? 'Proyectos' : 'Projects'}</span>
         </h2>
-        <Project />
+        <Project {lang} />
       </div>
     </SectionContainer>
 

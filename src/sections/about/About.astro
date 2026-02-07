@@ -1,64 +1,75 @@
 ---
-import StackTree from '../../components/StackTree.astro';
-import { useTranslations } from '../../i18n/translations';
-import type { Language } from '../../stores/langStore';
+import StackTree from "../../components/StackTree.astro";
+import { useTranslations } from "../../i18n/translations";
+import type { Language } from "../../stores/langStore";
 
 interface Props {
   lang?: Language;
 }
 
-const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
+const { lang = "en" } = Astro.props;
+const translation = useTranslations(lang);
 ---
 
 <div class="space-y-8">
   <div class="space-y-4">
-    <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl" data-i18n-key="about.description1">
-      {t.about.description1}
+    <p
+      class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl"
+      data-i18n-key="about.description1"
+    >
+      {translation.about.description1}
     </p>
-    <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl" data-i18n-key="about.description2">
-      {t.about.description2}
+    <p
+      class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl"
+      data-i18n-key="about.description2"
+    >
+      {translation.about.description2}
     </p>
   </div>
 
   <div class="space-y-4">
-    <h3 class="text-lg font-semibold text-white" data-i18n-key="about.stackProficiency">{t.about.stackProficiency}</h3>
+    <h3
+      class="text-lg font-semibold text-white"
+      data-i18n-key="about.stackProficiency"
+    >
+      {translation.about.stackProficiency}
+    </h3>
     <StackTree
       stacks={[
         {
-          layer: 'frontend',
+          layer: "frontend",
           technologies: [
-            { name: 'React', level: 'proficient' },
-            { name: 'TypeScript', level: 'proficient' },
-            { name: 'Astro', level: 'advanced' },
-            { name: 'Vue', level: 'intermediate' },
+            { name: "React", level: "proficient" },
+            { name: "TypeScript", level: "proficient" },
+            { name: "Astro", level: "advanced" },
+            { name: "Vue", level: "intermediate" },
           ],
         },
         {
-          layer: 'backend',
+          layer: "backend",
           technologies: [
-            { name: 'Node.js', level: 'proficient' },
-            { name: 'Express', level: 'proficient' },
-            { name: 'Python', level: 'intermediate' },
-            { name: 'Django', level: 'intermediate' },
+            { name: "Node.js", level: "proficient" },
+            { name: "Express", level: "proficient" },
+            { name: "Python", level: "intermediate" },
+            { name: "Django", level: "intermediate" },
           ],
         },
         {
-          layer: 'cloud',
+          layer: "cloud",
           technologies: [
-            { name: 'AWS', level: 'advanced' },
-            { name: 'Lambda', level: 'proficient' },
-            { name: 'Serverless', level: 'proficient' },
-            { name: 'Docker', level: 'intermediate' },
+            { name: "AWS", level: "advanced" },
+            { name: "Lambda", level: "proficient" },
+            { name: "Serverless", level: "proficient" },
+            { name: "Docker", level: "intermediate" },
           ],
         },
         {
-          layer: 'data',
+          layer: "data",
           technologies: [
-            { name: 'PostgreSQL', level: 'proficient' },
-            { name: 'MongoDB', level: 'intermediate' },
-            { name: 'DynamoDB', level: 'intermediate' },
-            { name: 'Analytics', level: 'intermediate' },
+            { name: "PostgreSQL", level: "proficient" },
+            { name: "MongoDB", level: "intermediate" },
+            { name: "DynamoDB", level: "intermediate" },
+            { name: "Analytics", level: "intermediate" },
           ],
         },
       ]}
@@ -66,26 +77,29 @@ const t = useTranslations(lang);
     />
   </div>
 
-  <div
-    class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6"
-  >
-    <h3 class="text-lg font-semibold text-white" data-i18n-key="about.focusAreas">{t.about.focusAreas}</h3>
+  <div class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6">
+    <h3
+      class="text-lg font-semibold text-white"
+      data-i18n-key="about.focusAreas"
+    >
+      {translation.about.focusAreas}
+    </h3>
     <ul class="space-y-2 text-gray-400 text-sm">
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus1">{t.about.focus1}</span>
+        <span data-i18n-key="about.focus1">{translation.about.focus1}</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus2">{t.about.focus2}</span>
+        <span data-i18n-key="about.focus2">{translation.about.focus2}</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus3">{t.about.focus3}</span>
+        <span data-i18n-key="about.focus3">{translation.about.focus3}</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus4">{t.about.focus4}</span>
+        <span data-i18n-key="about.focus4">{translation.about.focus4}</span>
       </li>
     </ul>
   </div>

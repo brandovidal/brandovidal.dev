@@ -1,51 +1,52 @@
 ---
-import SystemInfo from '../../components/SystemInfo.astro';
-import SocialPill from '../../components/SocialPill.astro';
-import { useTranslations } from '../../i18n/translations';
-import type { Language } from '../../stores/langStore';
+import FlowHeader from "../../components/FlowHeader.astro";
+import SocialPill from "../../components/SocialPill.astro";
+import { useTranslations } from "../../i18n/translations";
+import type { Language } from "../../stores/langStore";
 
-import LinkedinIcon from '../../icons/LinkedinIcon.astro';
-import GithubIcon from '../../icons/GithubIcon.astro';
-import FilePdfIcon from '../../icons/FilePdfIcon.astro';
+import LinkedinIcon from "../../icons/LinkedinIcon.astro";
+import GithubIcon from "../../icons/GithubIcon.astro";
+import FilePdfIcon from "../../icons/FilePdfIcon.astro";
 
 interface Props {
   lang?: Language;
 }
 
-const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
+const { lang = "en" } = Astro.props;
+const translation = useTranslations(lang);
 
 const SOCIAL_MEDIAS = [
   {
-    name: 'Linkedin',
-    href: 'https://www.linkedin.com/in/brandovidal',
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/brandovidal",
     icon: LinkedinIcon,
   },
   {
-    name: 'Github',
-    href: 'https://github.com/brandovidal',
+    name: "Github",
+    href: "https://github.com/brandovidal",
     icon: GithubIcon,
   },
   {
-    name: lang === 'es' ? 'Resumen' : 'Resume',
-    href: 'https://pub-f58ba5761f03439babd2963d9a9fe027.r2.dev/BrandoVidalCV.pdf',
+    name: lang === "es" ? "Resumen" : "Resume",
+    href: "https://pub-f58ba5761f03439babd2963d9a9fe027.r2.dev/BrandoVidalCV.pdf",
     icon: FilePdfIcon,
   },
 ];
 ---
 
 <div class="space-y-6">
-  <SystemInfo
+  <FlowHeader
     name="Brando Vidal"
-    role={t.resume.role}
-    experience={t.resume.experience}
-    availability="available"
+    role={translation.resume.role}
     lang={lang}
   />
 
   <div class="space-y-3">
-    <p class="text-gray-400 text-base leading-relaxed" data-i18n-key="resume.description">
-      {t.resume.description}
+    <p
+      class="text-gray-400 text-base leading-relaxed"
+      data-i18n-key="resume.description"
+    >
+      {translation.resume.description}
     </p>
     <nav class="flex flex-wrap gap-3">
       {

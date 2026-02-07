@@ -5,8 +5,16 @@ import LayerBadge from "../../components/LayerBadge.astro";
 import GithubIcon from "../../icons/GithubIcon.astro";
 import LinkIcon from "../../icons/LinkIcon.astro";
 
+import { useTranslations } from "../../i18n/translations";
+import type { Language } from "../../stores/langStore";
+
+interface Props {
+  lang?: Language;
+}
+
 interface ArchitectureLayer {
   name: string;
+  nameKey?: string;
   layer: 'frontend' | 'backend' | 'cloud' | 'data';
   tech: string[];
 }
@@ -14,6 +22,7 @@ interface ArchitectureLayer {
 interface ProjectItem {
   name: string;
   description: string;
+  descriptionKey?: string;
   url: string;
   githubUrl: string;
   imageUrl: string;
@@ -22,28 +31,34 @@ interface ProjectItem {
   };
 }
 
+const { lang = "en" } = Astro.props;
+const translation = useTranslations(lang);
+
 const PROJECTS: ProjectItem[] = [
   {
     name: "Bittyurl",
-    description:
-      "Free URL shortener. Built with modern technologies for speed and simplicity.",
+    description: translation.projects.items.bittyurl.description,
+    descriptionKey: "projects.items.bittyurl.description",
     url: "https://bittyurl.netlify.app/",
     githubUrl: "https://github.com/brandovidal/bittyurl",
     imageUrl: "/projects/bittyurl.webp",
     architecture: {
       layers: [
         {
-          name: "UI Layer",
+          name: translation.projects.items.bittyurl.architecture.uiLayer,
+          nameKey: "projects.items.bittyurl.architecture.uiLayer",
           layer: "frontend",
           tech: ["Astro", "React", "TypeScript"],
         },
         {
-          name: "API Layer",
+          name: translation.projects.items.bittyurl.architecture.apiLayer,
+          nameKey: "projects.items.bittyurl.architecture.apiLayer",
           layer: "backend",
           tech: ["Serverless Functions", "Edge Runtime"],
         },
         {
-          name: "Data Layer",
+          name: translation.projects.items.bittyurl.architecture.dataLayer,
+          nameKey: "projects.items.bittyurl.architecture.dataLayer",
           layer: "data",
           tech: ["KV Store", "Edge Storage"],
         },
@@ -55,7 +70,7 @@ const PROJECTS: ProjectItem[] = [
 
 <div class="grid grid-cols-1 gap-8">
   {
-    PROJECTS.map(({ name, description, url, githubUrl, imageUrl, architecture }) => (
+    PROJECTS.map(({ name, description, descriptionKey, url, githubUrl, imageUrl, architecture }) => (
       <article class="border border-white/10 rounded-lg overflow-hidden bg-white/[0.02] backdrop-blur-sm hover:border-white/20 transition-all duration-300">
         {/* Project image */}
         <div class="relative overflow-hidden h-64 sm:h-72 bg-gradient-to-br from-white/5 to-white/[0.02]">
@@ -70,17 +85,17 @@ const PROJECTS: ProjectItem[] = [
           {/* Header */}
           <div>
             <h3 class="text-2xl font-semibold text-white mb-2">{name}</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">{description}</p>
+            <p class="text-gray-400 text-sm leading-relaxed" data-i18n-key={descriptionKey}>{description}</p>
           </div>
 
           {/* Architecture diagram */}
           <div class="bg-white/[0.02] border border-white/5 rounded p-4 space-y-3">
-            <h4 class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Architecture</h4>
+            <h4 class="text-xs font-semibold text-gray-300 uppercase tracking-wider" data-i18n-key="projects.labels.architecture">{translation.projects.labels.architecture}</h4>
             <div class="space-y-2">
               {
                 architecture.layers.map((layer) => (
                   <div class="flex items-center gap-2">
-                    <div class="min-w-[100px] text-xs font-medium text-gray-300">
+                    <div class="min-w-[100px] text-xs font-medium text-gray-300" data-i18n-key={layer.nameKey}>
                       [{layer.name}]
                     </div>
                     <div class="text-gray-500 text-xs">→</div>
@@ -99,11 +114,11 @@ const PROJECTS: ProjectItem[] = [
           <div class="flex flex-wrap gap-3 pt-2">
             <SocialPill href={url}>
               <LinkIcon class="size-4 lg:size-6" />
-              Visit
+              <span data-i18n-key="projects.labels.visit">{translation.projects.labels.visit}</span>
             </SocialPill>
             <SocialPill href={githubUrl}>
               <GithubIcon class="size-4 lg:size-6" />
-              Code
+              <span data-i18n-key="projects.labels.code">{translation.projects.labels.code}</span>
             </SocialPill>
           </div>
         </div>
