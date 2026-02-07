@@ -1,5 +1,5 @@
 ---
-import FlowHeader from "../../components/FlowHeader.astro";
+import HeroHeader from "../../components/HeroHeader.astro";
 import SocialPill from "../../components/SocialPill.astro";
 import { useTranslations } from "../../i18n/translations";
 import type { Language } from "../../stores/langStore";
@@ -35,7 +35,7 @@ const SOCIAL_MEDIAS = [
 ---
 
 <div class="space-y-6">
-  <FlowHeader
+  <HeroHeader
     name="Brando Vidal"
     role={translation.resume.role}
     lang={lang}
