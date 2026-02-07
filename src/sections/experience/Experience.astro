@@ -15,7 +15,7 @@ interface ExperienceItemData {
   date: string;
   dateKey: string;
   link?: string;
-  layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
+  layers: ("frontend" | "backend" | "cloud" | "data")[];
   technologies: string[];
 }
 
@@ -32,7 +32,14 @@ const EXPERIENCES: ExperienceItemData[] = [
     dateKey: "experience.items.softtek.date",
     link: "https://softtek.com/",
     layers: ["backend", "cloud", "data"],
-    technologies: ["Node.js", "AWS Lambda", "DynamoDB", "Python"],
+    technologies: [
+      "Node.js",
+      "TypeScript",
+      "NestJS",
+      "AWS",
+      "DynamoDB",
+      "Python",
+    ],
   },
   {
     title: "Frontend Engineer",
@@ -53,7 +60,7 @@ const EXPERIENCES: ExperienceItemData[] = [
     date: translation.experience.items.samishop.date,
     dateKey: "experience.items.samishop.date",
     layers: ["frontend", "backend", "data"],
-    technologies: ["React", "Express", "PostgreSQL", "Redux"],
+    technologies: ["React", "Node.js", "NestJS", "MongoDB", "React"],
   },
   {
     title: "Data Analyst Engineer",
@@ -82,19 +89,34 @@ const EXPERIENCES: ExperienceItemData[] = [
 
 <div class="space-y-8">
   {
-    EXPERIENCES.map(({ title, company, description, descriptionKey, date, dateKey, link, layers, technologies }, i) => (
-      <ExperienceItem
-        title={title}
-        company={company}
-        description={description}
-        descriptionKey={descriptionKey}
-        date={date}
-        dateKey={dateKey}
-        link={link}
-        layers={layers}
-        technologies={technologies}
-        index={i}
-      />
-    ))
+    EXPERIENCES.map(
+      (
+        {
+          title,
+          company,
+          description,
+          descriptionKey,
+          date,
+          dateKey,
+          link,
+          layers,
+          technologies,
+        },
+        i,
+      ) => (
+        <ExperienceItem
+          title={title}
+          company={company}
+          description={description}
+          descriptionKey={descriptionKey}
+          date={date}
+          dateKey={dateKey}
+          link={link}
+          layers={layers}
+          technologies={technologies}
+          index={i}
+        />
+      ),
+    )
   }
 </div>

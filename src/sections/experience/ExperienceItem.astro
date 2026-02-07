@@ -11,24 +11,41 @@ interface Props {
   date: string;
   dateKey?: string;
   link?: string;
-  layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
+  layers: ("frontend" | "backend" | "cloud" | "data")[];
   technologies: string[];
   index?: number;
 }
-const { title, company, description, descriptionKey, date, dateKey, link, layers, technologies, index = 0 } = Astro.props;
+const {
+  title,
+  company,
+  description,
+  descriptionKey,
+  date,
+  dateKey,
+  link,
+  layers,
+  technologies,
+  index = 0,
+} = Astro.props;
 ---
 
-<Card class="p-6 animate-fade-in-up" style={`animation-delay: ${index * 100}ms`}>
+<Card
+  class="p-6 animate-fade-in-up"
+  style={`animation-delay: ${index * 100}ms`}
+>
   <article class="flex flex-col gap-4">
     {/* Date and title */}
     <div>
-      <time class="text-xs font-mono text-gray-500 uppercase tracking-wider" data-i18n-key={dateKey}>{date}</time>
+      <time
+        class="text-xs font-mono text-gray-500 uppercase tracking-wider"
+        data-i18n-key={dateKey}>{date}</time
+      >
       <h3 class="text-xl font-semibold text-white mt-2">{title}</h3>
       <a
-        href={link || '#'}
+        href={link || "#"}
         class="text-base font-medium text-gray-400 hover:text-white transition-colors inline-block"
-        target={link ? '_blank' : undefined}
-        rel={link ? 'noopener noreferrer' : undefined}
+        target={link ? "_blank" : undefined}
+        rel={link ? "noopener noreferrer" : undefined}
       >
         {company}
       </a>
@@ -40,7 +57,10 @@ const { title, company, description, descriptionKey, date, dateKey, link, layers
     </div>
 
     {/* Description */}
-    <p class="text-sm text-gray-400 leading-relaxed text-pretty" data-i18n-key={descriptionKey}>
+    <p
+      class="text-sm text-gray-400 leading-relaxed text-pretty"
+      data-i18n-key={descriptionKey}
+    >
       {description}
     </p>
 
@@ -48,17 +68,57 @@ const { title, company, description, descriptionKey, date, dateKey, link, layers
     <div class="flex flex-wrap gap-2 pt-2">
       {
         technologies.map((tech) => {
-          let layer: 'frontend' | 'backend' | 'cloud' | 'data' = 'backend';
+          let layer: "frontend" | "backend" | "cloud" | "data" = "backend";
           if (
-            ['React', 'Vue', 'Angular', 'TypeScript', 'CSS', 'HTML', 'Astro', 'Next.js'].includes(tech)
+            [
+              "React",
+              "Vue",
+              "Angular",
+              "TypeScript",
+              "CSS",
+              "HTML",
+              "Astro",
+              "Next.js",
+            ].includes(tech)
           ) {
-            layer = 'frontend';
-          } else if (['Node.js', 'Express', 'Python', 'Django', 'FastAPI'].includes(tech)) {
-            layer = 'backend';
-          } else if (['AWS', 'Lambda', 'Serverless', 'Microservices'].includes(tech)) {
-            layer = 'cloud';
-          } else if (['PostgreSQL', 'MongoDB', 'DynamoDB', 'SQL', 'Analytics', 'ETL'].includes(tech)) {
-            layer = 'data';
+            layer = "frontend";
+          } else if (
+            [
+              "Node.js",
+              "NestJS",
+              "Express",
+              "Python",
+              "Kotlin",
+              "SpringBoot",
+              "FastAPI",
+            ].includes(tech)
+          ) {
+            layer = "backend";
+          } else if (
+            [
+              "AWS",
+              "GCP",
+              "Azure",
+              "Lambda",
+              "Serverless",
+              "Microservices",
+              "Github Actions",
+            ].includes(tech)
+          ) {
+            layer = "cloud";
+          } else if (
+            [
+              "PostgreSQL",
+              "MongoDB",
+              "DynamoDB",
+              "MySQL",
+              "Redis",
+              "SQL",
+              "Analytics",
+              "ETL",
+            ].includes(tech)
+          ) {
+            layer = "data";
           }
           return <LayerBadge name={tech} layer={layer} />;
         })
