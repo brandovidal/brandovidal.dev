@@ -1,4 +1,5 @@
 ---
+import Card from './Card.astro';
 import type { Language } from '../stores/langStore';
 
 interface Technology {
@@ -54,9 +55,7 @@ const levelLabels = {
 };
 ---
 
-<div
-  class="font-mono text-sm border border-white/10 rounded-lg bg-white/[0.02] backdrop-blur-sm p-6 space-y-4"
->
+<Card class="font-mono text-sm p-6 space-y-4">
   {
     stacks.map((stack, idx) => (
       <div>
@@ -89,4 +88,4 @@ const levelLabels = {
       </div>
     ))
   }
-</div>
+</Card>

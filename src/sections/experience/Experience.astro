@@ -82,7 +82,7 @@ const EXPERIENCES: ExperienceItemData[] = [
 
 <div class="space-y-8">
   {
-    EXPERIENCES.map(({ title, company, description, descriptionKey, date, dateKey, link, layers, technologies }) => (
+    EXPERIENCES.map(({ title, company, description, descriptionKey, date, dateKey, link, layers, technologies }, i) => (
       <ExperienceItem
         title={title}
         company={company}
@@ -93,6 +93,7 @@ const EXPERIENCES: ExperienceItemData[] = [
         link={link}
         layers={layers}
         technologies={technologies}
+        index={i}
       />
     ))
   }

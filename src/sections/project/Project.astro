@@ -1,4 +1,5 @@
 ---
+import Card from "../../components/Card.astro";
 import SocialPill from "../../components/SocialPill.astro";
 import LayerBadge from "../../components/LayerBadge.astro";
 
@@ -70,14 +71,15 @@ const PROJECTS: ProjectItem[] = [
 
 <div class="grid grid-cols-1 gap-8">
   {
-    PROJECTS.map(({ name, description, descriptionKey, url, githubUrl, imageUrl, architecture }) => (
-      <article class="border border-white/10 rounded-lg overflow-hidden bg-white/[0.02] backdrop-blur-sm hover:border-white/20 transition-all duration-300">
+    PROJECTS.map(({ name, description, descriptionKey, url, githubUrl, imageUrl, architecture }, i) => (
+      <Card class="overflow-hidden animate-fade-in-up" style={`animation-delay: ${i * 100}ms`}>
+        <article>
         {/* Project image */}
         <div class="relative overflow-hidden h-64 sm:h-72 bg-gradient-to-br from-white/5 to-white/[0.02]">
           <img
             src={imageUrl}
             alt={`${name} screenshot`}
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
           />
         </div>
 
@@ -123,6 +125,7 @@ const PROJECTS: ProjectItem[] = [
           </div>
         </div>
       </article>
+      </Card>
     ))
   }
 </div>

@@ -40,9 +40,12 @@ const { title, description } = Astro.props;
     </script>
   </head>
   <body>
-    <div
-      class="absolute top-0 z-[-2] min-h-screen w-full bg-neutral-950 dark:bg-neutral-950 light:bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] light:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.08),rgba(255,255,255,0))]"
-    >
+    {/* Fixed gradient background - spans entire viewport height */}
+    <div class="fixed inset-0 z-[-2] w-full h-full bg-neutral-950 dark:bg-neutral-950 light:bg-white overflow-hidden">
+      {/* Top radial gradient - purple glow from data layer */}
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.15),transparent_50%)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.15),transparent_50%)] light:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(139,92,246,0.05),transparent_50%)]"></div>
+      {/* Bottom gradient - depth layer */}
+      <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-purple-950/20 to-transparent dark:from-purple-950/20 light:from-purple-100/30"></div>
     </div>
 
     <Header />
@@ -57,6 +60,7 @@ const { title, description } = Astro.props;
     scroll-behavior: smooth;
     background-color: #0a0a0a;
     color: white;
+    height: 100%;
   }
 
   html.light {
@@ -68,6 +72,7 @@ const { title, description } = Astro.props;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
   }
 
   @media (prefers-reduced-motion: reduce) {

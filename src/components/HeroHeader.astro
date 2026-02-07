@@ -15,9 +15,9 @@ const layers = [
 ];
 ---
 
-<div class="py-8 space-y-6">
-  {/* Hero Name with Gradient */}
-  <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-400 via-emerald-400 via-amber-400 to-purple-500 text-transparent bg-clip-text">
+<div class="py-8 space-y-6 animate-fade-in-up">
+  {/* Hero Name with Gradient and Glow */}
+  <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-400 via-emerald-400 via-amber-400 to-purple-500 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(139,92,246,0.5)]">
     {name}
   </h1>
 
@@ -31,8 +31,8 @@ const layers = [
 
   {/* Layer Badges */}
   <div class="flex flex-wrap gap-2 pt-2">
-    {layers.map(layer => (
-      <span class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border ${layer.color}`}>
+    {layers.map((layer, i) => (
+      <span class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border ${layer.color} hover:animate-jiggle animate-duration-300 transition-all`} style={`animation-delay: ${i * 100}ms`}>
         {layer.name}
       </span>
     ))}

@@ -50,11 +50,13 @@ const SOCIAL_MEDIAS = [
     </p>
     <nav class="flex flex-wrap gap-3">
       {
-        SOCIAL_MEDIAS.map(({ name, href, icon: Icon }) => (
-          <SocialPill href={href}>
-            <Icon class="size-4 lg:size-6" />
-            {name}
-          </SocialPill>
+        SOCIAL_MEDIAS.map(({ name, href, icon: Icon }, i) => (
+          <div style={`animation-delay: ${i * 100}ms`}>
+            <SocialPill href={href}>
+              <Icon class="size-4 lg:size-6" />
+              {name}
+            </SocialPill>
+          </div>
         ))
       }
     </nav>

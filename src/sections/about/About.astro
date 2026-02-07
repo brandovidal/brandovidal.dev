@@ -1,4 +1,5 @@
 ---
+import Card from "../../components/Card.astro";
 import StackTree from "../../components/StackTree.astro";
 import { useTranslations } from "../../i18n/translations";
 import type { Language } from "../../stores/langStore";
@@ -77,30 +78,32 @@ const translation = useTranslations(lang);
     />
   </div>
 
-  <div class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6">
-    <h3
-      class="text-lg font-semibold text-white"
-      data-i18n-key="about.focusAreas"
-    >
-      {translation.about.focusAreas}
-    </h3>
-    <ul class="space-y-2 text-gray-400 text-sm">
-      <li class="flex items-start gap-3">
-        <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus1">{translation.about.focus1}</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus2">{translation.about.focus2}</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus3">{translation.about.focus3}</span>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="text-emerald-400 mt-0.5">→</span>
-        <span data-i18n-key="about.focus4">{translation.about.focus4}</span>
-      </li>
-    </ul>
-  </div>
+  <Card class="p-6">
+    <div class="space-y-3">
+      <h3
+        class="text-lg font-semibold text-white"
+        data-i18n-key="about.focusAreas"
+      >
+        {translation.about.focusAreas}
+      </h3>
+      <ul class="space-y-2 text-gray-400 text-sm">
+        <li class="flex items-start gap-3">
+          <span class="text-emerald-400 mt-0.5">→</span>
+          <span data-i18n-key="about.focus1">{translation.about.focus1}</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-emerald-400 mt-0.5">→</span>
+          <span data-i18n-key="about.focus2">{translation.about.focus2}</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-emerald-400 mt-0.5">→</span>
+          <span data-i18n-key="about.focus3">{translation.about.focus3}</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-emerald-400 mt-0.5">→</span>
+          <span data-i18n-key="about.focus4">{translation.about.focus4}</span>
+        </li>
+      </ul>
+    </div>
+  </Card>
 </div>
