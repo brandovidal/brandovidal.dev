@@ -1,12 +1,11 @@
 ---
 import LanguageToggle from "../components/LanguageToggle.astro";
-import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
 <header class="sticky top-0 z-10 w-full">
   {/* Progress bar indicating scroll through layers */}
   <div
-    class="h-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-purple-500 opacity-0 hover:opacity-100 transition-opacity duration-300"
+    class="h-1 bg-linear-to-r from-blue-500 via-emerald-500 to-purple-500 opacity-0 hover:opacity-100 transition-opacity duration-300"
   >
   </div>
 
@@ -57,7 +56,6 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     {/* Theme and Language toggles */}
     <div class="flex gap-3 items-center">
       <LanguageToggle />
-      <!-- <ThemeToggle class="hidden" /> -->
     </div>
   </div>
 </header>

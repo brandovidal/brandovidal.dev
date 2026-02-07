@@ -4,7 +4,7 @@
 
 <div
   id="language-toggle"
-  class="font-mono text-xs border border-white/10 rounded bg-white/[0.02] backdrop-blur-sm flex divide-x divide-white/10 overflow-hidden"
+  class="font-mono text-xs border border-white/10 rounded bg-white/2 backdrop-blur-sm flex divide-x divide-white/10 overflow-hidden"
 >
   <button
     id="lang-es"
@@ -23,8 +23,13 @@
 </div>
 
 <script>
-  import { initLanguage, setLanguage, getCurrentLanguage, onLanguageChange } from '../stores/langStore';
-  import { translations } from '../i18n/translations';
+  import {
+    initLanguage,
+    setLanguage,
+    getCurrentLanguage,
+    onLanguageChange,
+  } from "../stores/langStore";
+  import { translations } from "../i18n/translations";
 
   // Initialize language on page load
   initLanguage();
@@ -32,16 +37,20 @@
   // Update active state with emerald styling
   function updateActive() {
     const current = getCurrentLanguage();
-    const esBtn = document.getElementById('lang-es');
-    const enBtn = document.getElementById('lang-en');
+    const esBtn = document.getElementById("lang-es");
+    const enBtn = document.getElementById("lang-en");
 
     if (esBtn && enBtn) {
-      if (current === 'es') {
-        esBtn.className = 'px-3 py-1.5 bg-emerald-400 text-black font-semibold transition-all duration-300';
-        enBtn.className = 'px-3 py-1.5 text-gray-400 hover:text-white transition-all duration-300';
+      if (current === "es") {
+        esBtn.className =
+          "px-3 py-1.5 bg-emerald-400 text-black font-semibold transition-all duration-300";
+        enBtn.className =
+          "px-3 py-1.5 text-gray-400 hover:text-white transition-all duration-300";
       } else {
-        enBtn.className = 'px-3 py-1.5 bg-emerald-400 text-black font-semibold transition-all duration-300';
-        esBtn.className = 'px-3 py-1.5 text-gray-400 hover:text-white transition-all duration-300';
+        enBtn.className =
+          "px-3 py-1.5 bg-emerald-400 text-black font-semibold transition-all duration-300";
+        esBtn.className =
+          "px-3 py-1.5 text-gray-400 hover:text-white transition-all duration-300";
       }
     }
 
@@ -50,45 +59,48 @@
   }
 
   // Update all translatable content on the page
-  function updateAllTranslations(lang: 'es' | 'en') {
+  function updateAllTranslations(lang: "es" | "en") {
     const t = translations[lang];
 
     // Update nav links
-    const navElements = document.querySelectorAll('[data-i18n-key]');
+    const navElements = document.querySelectorAll("[data-i18n-key]");
     navElements.forEach((el) => {
-      const key = el.getAttribute('data-i18n-key');
+      const key = el.getAttribute("data-i18n-key");
       if (!key) return;
 
-      const keys = key.split('.');
+      const keys = key.split(".");
       let value: any = t;
       for (const k of keys) {
         value = value[k];
       }
 
-      if (value && typeof value === 'string') {
+      if (value && typeof value === "string") {
         el.textContent = value;
       }
     });
 
     // Update section titles
-    const resumeTitle = document.querySelector('[data-i18n-resume-title]');
+    const resumeTitle = document.querySelector("[data-i18n-resume-title]");
     if (resumeTitle) {
-      resumeTitle.textContent = lang === 'es' ? 'Resumen' : 'Resume';
+      resumeTitle.textContent = lang === "es" ? "Resumen" : "Resume";
     }
 
-    const experienceTitle = document.querySelector('[data-i18n-experience-title]');
+    const experienceTitle = document.querySelector(
+      "[data-i18n-experience-title]",
+    );
     if (experienceTitle) {
-      experienceTitle.textContent = lang === 'es' ? 'Experiencia' : 'Experience';
+      experienceTitle.textContent =
+        lang === "es" ? "Experiencia" : "Experience";
     }
 
-    const projectsTitle = document.querySelector('[data-i18n-projects-title]');
+    const projectsTitle = document.querySelector("[data-i18n-projects-title]");
     if (projectsTitle) {
-      projectsTitle.textContent = lang === 'es' ? 'Proyectos' : 'Projects';
+      projectsTitle.textContent = lang === "es" ? "Proyectos" : "Projects";
     }
 
-    const aboutTitle = document.querySelector('[data-i18n-about-title]');
+    const aboutTitle = document.querySelector("[data-i18n-about-title]");
     if (aboutTitle) {
-      aboutTitle.textContent = lang === 'es' ? 'Sobre mí' : 'About';
+      aboutTitle.textContent = lang === "es" ? "Sobre mí" : "About";
     }
   }
 
@@ -96,14 +108,14 @@
   onLanguageChange(updateActive);
 
   // Handle clicks
-  const esBtn = document.getElementById('lang-es');
-  const enBtn = document.getElementById('lang-en');
+  const esBtn = document.getElementById("lang-es");
+  const enBtn = document.getElementById("lang-en");
 
   if (esBtn) {
-    esBtn.addEventListener('click', () => setLanguage('es'));
+    esBtn.addEventListener("click", () => setLanguage("es"));
   }
   if (enBtn) {
-    enBtn.addEventListener('click', () => setLanguage('en'));
+    enBtn.addEventListener("click", () => setLanguage("en"));
   }
 
   // Initial state
