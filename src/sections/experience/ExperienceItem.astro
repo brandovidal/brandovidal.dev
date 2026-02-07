@@ -68,13 +68,14 @@ const {
     <div class="flex flex-wrap gap-2 pt-2">
       {
         technologies.map((tech) => {
-          let layer: "frontend" | "backend" | "cloud" | "data" = "backend";
+          let layer: "frontend" | "backend" | "cloud" | "data" | "tool" =
+            "frontend";
           if (
             [
               "React",
               "Vue",
               "Angular",
-              "TypeScript",
+              "Tailwind CSS",
               "CSS",
               "HTML",
               "Astro",
@@ -119,6 +120,8 @@ const {
             ].includes(tech)
           ) {
             layer = "data";
+          } else {
+            layer = "tool";
           }
           return <LayerBadge name={tech} layer={layer} />;
         })
