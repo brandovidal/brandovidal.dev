@@ -1,16 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
 
-import Resume from "../sections/resume/Resume.astro";
-import Experience from "../sections/experience/Experience.astro";
-import Project from "../sections/project/Project.astro";
-import About from "../sections/about/About.astro";
+import Resume from '../sections/resume/Resume.astro';
+import Experience from '../sections/experience/Experience.astro';
+import Project from '../sections/project/Project.astro';
+import About from '../sections/about/About.astro';
 
-import SectionContainer from "../components/SectionContainer.astro";
+import SectionContainer from '../components/SectionContainer.astro';
 
-import GitMergeIcon from "../icons/GitMergeIcon.astro";
-import CodeIcon from "../icons/CodeIcon.astro";
-import PersonIcon from "../icons/PersonIcon.astro";
+import GitMergeIcon from '../icons/GitMergeIcon.astro';
+import CodeIcon from '../icons/CodeIcon.astro';
+import PersonIcon from '../icons/PersonIcon.astro';
+
+// Default to English - language will be managed client-side
+const lang = 'en' as 'en' | 'es';
 ---
 
 <Layout
@@ -19,14 +22,14 @@ import PersonIcon from "../icons/PersonIcon.astro";
 >
   <main>
     <SectionContainer id="resume">
-      <Resume />
+      <Resume lang={lang} />
     </SectionContainer>
 
     <SectionContainer id="experience">
       <div class="space-y-8">
         <h2 class="flex gap-x-3 text-3xl font-bold">
           <GitMergeIcon />
-          <span>Experience</span>
+          <span>{lang === 'es' ? 'Experiencia' : 'Experience'}</span>
         </h2>
         <Experience />
       </div>
@@ -36,7 +39,7 @@ import PersonIcon from "../icons/PersonIcon.astro";
       <div class="space-y-8">
         <h2 class="flex gap-x-3 text-3xl font-bold">
           <CodeIcon />
-          <span>Projects</span>
+          <span>{lang === 'es' ? 'Proyectos' : 'Projects'}</span>
         </h2>
         <Project />
       </div>
@@ -46,9 +49,9 @@ import PersonIcon from "../icons/PersonIcon.astro";
       <div class="space-y-8">
         <h2 class="flex gap-x-3 text-3xl font-bold">
           <PersonIcon />
-          <span>About</span>
+          <span>{lang === 'es' ? 'Sobre mí' : 'About'}</span>
         </h2>
-        <About />
+        <About {lang} />
       </div>
     </SectionContainer>
   </main>

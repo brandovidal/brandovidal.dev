@@ -1,25 +1,34 @@
 ---
-import TerminalBlock from "../../components/TerminalBlock.astro";
-import SocialPill from "../../components/SocialPill.astro";
+import TerminalBlock from '../../components/TerminalBlock.astro';
+import SocialPill from '../../components/SocialPill.astro';
+import { useTranslations } from '../../i18n/translations';
+import type { Language } from '../../stores/langStore';
 
-import LinkedinIcon from "../../icons/LinkedinIcon.astro";
-import GithubIcon from "../../icons/GithubIcon.astro";
-import FilePdfIcon from "../../icons/FilePdfIcon.astro";
+import LinkedinIcon from '../../icons/LinkedinIcon.astro';
+import GithubIcon from '../../icons/GithubIcon.astro';
+import FilePdfIcon from '../../icons/FilePdfIcon.astro';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 
 const SOCIAL_MEDIAS = [
   {
-    name: "Linkedin",
-    href: "https://www.linkedin.com/in/brandovidal",
+    name: 'Linkedin',
+    href: 'https://www.linkedin.com/in/brandovidal',
     icon: LinkedinIcon,
   },
   {
-    name: "Github",
-    href: "https://github.com/brandovidal",
+    name: 'Github',
+    href: 'https://github.com/brandovidal',
     icon: GithubIcon,
   },
   {
-    name: "Resumen",
-    href: "https://pub-f58ba5761f03439babd2963d9a9fe027.r2.dev/BrandoVidalCV.pdf",
+    name: lang === 'es' ? 'Resumen' : 'Resume',
+    href: 'https://pub-f58ba5761f03439babd2963d9a9fe027.r2.dev/BrandoVidalCV.pdf',
     icon: FilePdfIcon,
   },
 ];
@@ -28,14 +37,14 @@ const SOCIAL_MEDIAS = [
 <div class="space-y-6">
   <TerminalBlock
     name="Brando Vidal"
-    role="AWS Developer Associate | Fullstack Developer"
-    experience="+5 años de experiencia"
+    role={t.resume.role}
+    experience={t.resume.experience}
     availability="available"
   />
 
   <div class="space-y-3">
     <p class="text-gray-400 text-base leading-relaxed">
-      Especializado en crear aplicaciones escalables y novedosas. Full-stack fluency across frontend, backend, cloud, and data layers.
+      {t.resume.description}
     </p>
     <nav class="flex flex-wrap gap-3">
       {

@@ -1,67 +1,91 @@
 ---
-import StackVisualization from "../../components/StackVisualization.astro";
+import StackTree from '../../components/StackTree.astro';
+import { useTranslations } from '../../i18n/translations';
+import type { Language } from '../../stores/langStore';
+
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class="space-y-8">
   <div class="space-y-4">
     <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
-      Fullstack developer with 5+ years of experience across the entire project lifecycle. I specialize in building scalable solutions that seamlessly integrate frontend, backend, cloud infrastructure, and data systems.
+      {t.about.description1}
     </p>
     <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
-      I'm passionate about best practices, testing, automation, and solving complex technical challenges. Always excited to learn new technologies and improve professionally.
+      {t.about.description2}
     </p>
   </div>
 
   <div class="space-y-4">
-    <h3 class="text-lg font-semibold text-white">Stack Proficiency</h3>
-    <StackVisualization
+    <h3 class="text-lg font-semibold text-white">{t.about.stackProficiency}</h3>
+    <StackTree
       stacks={[
         {
-          layer: "frontend",
-          label: "Frontend",
-          technologies: ["React", "TypeScript", "Astro", "Vue"],
-          coverage: 95,
+          layer: 'frontend',
+          technologies: [
+            { name: 'React', level: 'proficient' },
+            { name: 'TypeScript', level: 'proficient' },
+            { name: 'Astro', level: 'advanced' },
+            { name: 'Vue', level: 'intermediate' },
+          ],
         },
         {
-          layer: "backend",
-          label: "Backend",
-          technologies: ["Node.js", "Express", "Python", "Django"],
-          coverage: 90,
+          layer: 'backend',
+          technologies: [
+            { name: 'Node.js', level: 'proficient' },
+            { name: 'Express', level: 'proficient' },
+            { name: 'Python', level: 'intermediate' },
+            { name: 'Django', level: 'intermediate' },
+          ],
         },
         {
-          layer: "cloud",
-          label: "Cloud",
-          technologies: ["AWS", "Lambda", "Serverless", "Docker"],
-          coverage: 85,
+          layer: 'cloud',
+          technologies: [
+            { name: 'AWS', level: 'advanced' },
+            { name: 'Lambda', level: 'proficient' },
+            { name: 'Serverless', level: 'proficient' },
+            { name: 'Docker', level: 'intermediate' },
+          ],
         },
         {
-          layer: "data",
-          label: "Data",
-          technologies: ["PostgreSQL", "MongoDB", "DynamoDB", "Analytics"],
-          coverage: 80,
+          layer: 'data',
+          technologies: [
+            { name: 'PostgreSQL', level: 'proficient' },
+            { name: 'MongoDB', level: 'intermediate' },
+            { name: 'DynamoDB', level: 'intermediate' },
+            { name: 'Analytics', level: 'intermediate' },
+          ],
         },
       ]}
+      {lang}
     />
   </div>
 
-  <div class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6">
-    <h3 class="text-lg font-semibold text-white">Focus Areas</h3>
+  <div
+    class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6"
+  >
+    <h3 class="text-lg font-semibold text-white">{t.about.focusAreas}</h3>
     <ul class="space-y-2 text-gray-400 text-sm">
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span>Clean, maintainable code with emphasis on architecture patterns</span>
+        <span>{t.about.focus1}</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span>Comprehensive testing and quality assurance practices</span>
+        <span>{t.about.focus2}</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span>Automation and developer experience improvements</span>
+        <span>{t.about.focus3}</span>
       </li>
       <li class="flex items-start gap-3">
         <span class="text-emerald-400 mt-0.5">→</span>
-        <span>Building systems that scale across all layers</span>
+        <span>{t.about.focus4}</span>
       </li>
     </ul>
   </div>

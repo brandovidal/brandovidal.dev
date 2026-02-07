@@ -1,0 +1,68 @@
+---
+// Language toggle component with terminal aesthetic
+---
+
+<div
+  id="language-toggle"
+  class="font-mono text-xs border border-white/10 rounded bg-white/[0.02] backdrop-blur-sm flex divide-x divide-white/10 overflow-hidden hover:bg-white/5 transition-colors duration-300"
+>
+  <button
+    id="lang-es"
+    class="px-3 py-1.5 text-gray-400 hover:text-white transition-colors duration-300"
+    aria-label="Switch to Spanish"
+  >
+    :set lang=<span class="text-blue-400">es</span>
+  </button>
+  <button
+    id="lang-en"
+    class="px-3 py-1.5 text-gray-400 hover:text-white transition-colors duration-300"
+    aria-label="Switch to English"
+  >
+    :set lang=<span class="text-blue-400">en</span>
+  </button>
+</div>
+
+<script>
+  import { initLanguage, setLanguage, getCurrentLanguage, onLanguageChange } from '../stores/langStore';
+
+  // Initialize language on page load
+  initLanguage();
+
+  // Update active state
+  function updateActive() {
+    const current = getCurrentLanguage();
+    const esBtn = document.getElementById('lang-es');
+    const enBtn = document.getElementById('lang-en');
+
+    if (esBtn && enBtn) {
+      if (current === 'es') {
+        esBtn.classList.add('bg-white/10', 'text-white');
+        esBtn.classList.remove('text-gray-400');
+        enBtn.classList.remove('bg-white/10', 'text-white');
+        enBtn.classList.add('text-gray-400');
+      } else {
+        enBtn.classList.add('bg-white/10', 'text-white');
+        enBtn.classList.remove('text-gray-400');
+        esBtn.classList.remove('bg-white/10', 'text-white');
+        esBtn.classList.add('text-gray-400');
+      }
+    }
+  }
+
+  // Listen for language changes
+  onLanguageChange(updateActive);
+
+  // Handle clicks
+  const esBtn = document.getElementById('lang-es');
+  const enBtn = document.getElementById('lang-en');
+
+  if (esBtn) {
+    esBtn.addEventListener('click', () => setLanguage('es'));
+  }
+  if (enBtn) {
+    enBtn.addEventListener('click', () => setLanguage('en'));
+  }
+
+  // Initial state
+  updateActive();
+</script>
