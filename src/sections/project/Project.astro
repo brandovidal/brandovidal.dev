@@ -1,83 +1,131 @@
 ---
+import Card from "../../components/Card.astro";
 import SocialPill from "../../components/SocialPill.astro";
-
-import AstroIcon from "../../icons/AstroIcon.astro";
-import ShadcnIcon from "../../icons/ShadcnIcon.astro";
-import TailwindIcon from "../../icons/TailwindIcon.astro";
+import LayerBadge from "../../components/LayerBadge.astro";
 
 import GithubIcon from "../../icons/GithubIcon.astro";
 import LinkIcon from "../../icons/LinkIcon.astro";
 
-const TAGS = {
-  ASTRO: {
-    name: "Astro",
-    class: "bg-orange-500 text-white",
-    icon: AstroIcon,
-  },
-  SHADCN: {
-    name: "Shadcn UI",
-    class: "bg-white text-black",
-    icon: ShadcnIcon,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-teal-700 text-white",
-    icon: TailwindIcon,
-  },
-  TYPESCRIPT: {
-    name: "Typescript",
-    class: "bg-blue-500 text-white",
-    icon: AstroIcon,
-  },
-};
+import { useTranslations } from "../../i18n/translations";
+import type { Language } from "../../stores/langStore";
 
-const PROJECTS = [
+interface Props {
+  lang?: Language;
+}
+
+interface ArchitectureLayer {
+  name: string;
+  nameKey?: string;
+  layer: 'frontend' | 'backend' | 'cloud' | 'data';
+  tech: string[];
+}
+
+interface ProjectItem {
+  name: string;
+  description: string;
+  descriptionKey?: string;
+  url: string;
+  githubUrl: string;
+  imageUrl: string;
+  architecture: {
+    layers: ArchitectureLayer[];
+  };
+}
+
+const { lang = "en" } = Astro.props;
+const translation = useTranslations(lang);
+
+const PROJECTS: ProjectItem[] = [
   {
     name: "Bittyurl",
-    description:
-      "Cortador de URL gratuito. Creado con tecnologías modernas como Astro, Shadcn UI y Tailwind CSS.",
+    description: translation.projects.items.bittyurl.description,
+    descriptionKey: "projects.items.bittyurl.description",
     url: "https://bittyurl.netlify.app/",
     githubUrl: "https://github.com/brandovidal/bittyurl",
     imageUrl: "/projects/bittyurl.webp",
-    tags: [TAGS.ASTRO, TAGS.SHADCN, TAGS.TAILWIND],
+    architecture: {
+      layers: [
+        {
+          name: translation.projects.items.bittyurl.architecture.uiLayer,
+          nameKey: "projects.items.bittyurl.architecture.uiLayer",
+          layer: "frontend",
+          tech: ["Astro", "React", "TypeScript"],
+        },
+        {
+          name: translation.projects.items.bittyurl.architecture.apiLayer,
+          nameKey: "projects.items.bittyurl.architecture.apiLayer",
+          layer: "backend",
+          tech: ["Serverless Functions", "Edge Runtime"],
+        },
+        {
+          name: translation.projects.items.bittyurl.architecture.dataLayer,
+          nameKey: "projects.items.bittyurl.architecture.dataLayer",
+          layer: "data",
+          tech: ["KV Store", "Edge Storage"],
+        },
+      ],
+    },
   },
 ];
 ---
 
-{
-  PROJECTS.map(({ name, description, url, githubUrl, imageUrl, tags }) => (
-    <article class="flex flex-col-reverse sm:grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="flex flex-col gap-y-3">
-        <h3 class="text-2xl font-semibold text-purple-200">{name}</h3>
-        <p class="text-md md:text-lg text-pretty">{description}</p>
-        <div class="flex flex-row gap-x-4">
-          <SocialPill href={url}>
-            <LinkIcon class="size-4 lg:size-6" />
-            Visitar
-          </SocialPill>
-
-          <SocialPill href={githubUrl}>
-            <GithubIcon class="size-4 lg:size-6" />
-            C&oacute;digo
-          </SocialPill>
+<div class="grid grid-cols-1 gap-8">
+  {
+    PROJECTS.map(({ name, description, descriptionKey, url, githubUrl, imageUrl, architecture }, i) => (
+      <Card class="overflow-hidden animate-fade-in-up" style={`animation-delay: ${i * 100}ms`}>
+        <article>
+        {/* Project image */}
+        <div class="relative overflow-hidden h-64 sm:h-72 bg-gradient-to-br from-white/5 to-white/[0.02]">
+          <img
+            src={imageUrl}
+            alt={`${name} screenshot`}
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
         </div>
-      </div>
-      <div class="flex flex-col gap-y-4">
-        <img
-          src={imageUrl}
-          alt={`Captura de pantalla de ${name}`}
-          class="max-w-lg md:max-w-md lg:w-full rounded-xl shadow-2xl shadow-white/10 aspect-16/9 "
-        />
-        <ul class="flex flex-row gap-x-4 mb-4">
-          {tags.map((tag) => (
-            <li
-              class={`flex justify-center items-center gap-x-1 rounded-full py-1 px-2 text-xs font-light ${tag.class}`}
-            >
-              <tag.icon class="size-4" /> {tag.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  ))
-}
+
+        <div class="p-6 space-y-4">
+          {/* Header */}
+          <div>
+            <h3 class="text-2xl font-semibold text-white mb-2">{name}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed" data-i18n-key={descriptionKey}>{description}</p>
+          </div>
+
+          {/* Architecture diagram */}
+          <div class="bg-white/[0.02] border border-white/5 rounded p-4 space-y-3">
+            <h4 class="text-xs font-semibold text-gray-300 uppercase tracking-wider" data-i18n-key="projects.labels.architecture">{translation.projects.labels.architecture}</h4>
+            <div class="space-y-2">
+              {
+                architecture.layers.map((layer) => (
+                  <div class="flex items-center gap-2">
+                    <div class="min-w-[100px] text-xs font-medium text-gray-300" data-i18n-key={layer.nameKey}>
+                      [{layer.name}]
+                    </div>
+                    <div class="text-gray-500 text-xs">→</div>
+                    <div class="flex-1 flex flex-wrap gap-1">
+                      {layer.tech.map((tech) => (
+                        <LayerBadge name={tech} layer={layer.layer as 'frontend' | 'backend' | 'cloud' | 'data'} />
+                      ))}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          {/* Links */}
+          <div class="flex flex-wrap gap-3 pt-2">
+            <SocialPill href={url}>
+              <LinkIcon class="size-4 lg:size-6" />
+              <span data-i18n-key="projects.labels.visit">{translation.projects.labels.visit}</span>
+            </SocialPill>
+            <SocialPill href={githubUrl}>
+              <GithubIcon class="size-4 lg:size-6" />
+              <span data-i18n-key="projects.labels.code">{translation.projects.labels.code}</span>
+            </SocialPill>
+          </div>
+        </div>
+      </article>
+      </Card>
+    ))
+  }
+</div>

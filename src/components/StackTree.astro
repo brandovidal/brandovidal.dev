@@ -1,0 +1,97 @@
+---
+import Card from "./Card.astro";
+import type { Language } from "../stores/langStore";
+
+interface Technology {
+  name: string;
+  level: "advanced" | "proficient" | "intermediate";
+}
+
+interface StackLayer {
+  layer: "frontend" | "backend" | "cloud" | "data" | "tool";
+  technologies: Technology[];
+}
+
+interface Props {
+  stacks: StackLayer[];
+  lang: Language;
+}
+
+const { stacks, lang } = Astro.props;
+
+const layerColors = {
+  frontend: { color: "text-blue-400", bg: "bg-blue-500/10" },
+  backend: { color: "text-emerald-400", bg: "bg-emerald-500/10" },
+  cloud: { color: "text-amber-400", bg: "bg-amber-500/10" },
+  data: { color: "text-purple-400", bg: "bg-purple-500/10" },
+  tool: { color: "text-gray-400", bg: "bg-gray-500/10" },
+};
+
+const layerLabels = {
+  es: {
+    frontend: "Frontend",
+    backend: "Backend",
+    cloud: "Cloud",
+    data: "Data",
+    tool: "Tool",
+  },
+  en: {
+    frontend: "Frontend",
+    backend: "Backend",
+    cloud: "Cloud",
+    data: "Data",
+    tool: "Tool",
+  },
+};
+
+const levelLabels = {
+  es: {
+    advanced: "avanzado",
+    proficient: "proficiente",
+    intermediate: "intermedio",
+  },
+  en: {
+    advanced: "advanced",
+    proficient: "proficient",
+    intermediate: "intermediate",
+  },
+};
+---
+
+<Card class="font-mono text-sm p-6 space-y-4">
+  {
+    stacks.map((stack, idx) => (
+      <div>
+        {/* Layer header */}
+        <div class={`${layerColors[stack.layer].color} mb-2 font-semibold`}>
+          {idx === stacks.length - 1 ? "└─" : "├─"}{" "}
+          {layerLabels[lang][stack.layer]}
+        </div>
+
+        {/* Technologies */}
+        <div class="ml-4 space-y-1 text-gray-400">
+          {stack.technologies.map((tech, techIdx) => {
+            const isLast = techIdx === stack.technologies.length - 1;
+            const prefix = idx === stacks.length - 1 ? "   " : "│  ";
+            const connector = isLast ? "└─" : "├─";
+
+            return (
+              <div class="flex items-center justify-between">
+                <span>
+                  {prefix}
+                  {connector}
+                  <span class="text-gray-300 ml-1">{tech.name}</span>
+                  <span
+                    class={`ml-2 text-xs ${layerColors[stack.layer].color}/60`}
+                  >
+                    ({levelLabels[lang][tech.level]})
+                  </span>
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))
+  }
+</Card>
