@@ -14,6 +14,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://brandovidal.dev',
   integrations: [tailwind(), webVitals(), db(), sitemap()],
-  output: 'hybrid',
-  adapter: cloudflare()
+  output: 'static',
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+  })
 });
