@@ -29,7 +29,7 @@ const lang = 'en' as 'en' | 'es';
       <div class="space-y-8">
         <h2 class="flex gap-x-3 text-3xl font-bold">
           <GitMergeIcon />
-          <span>{lang === 'es' ? 'Experiencia' : 'Experience'}</span>
+          <span data-i18n-experience-title>{lang === 'es' ? 'Experiencia' : 'Experience'}</span>
         </h2>
         <Experience />
       </div>
@@ -39,7 +39,7 @@ const lang = 'en' as 'en' | 'es';
       <div class="space-y-8">
         <h2 class="flex gap-x-3 text-3xl font-bold">
           <CodeIcon />
-          <span>{lang === 'es' ? 'Proyectos' : 'Projects'}</span>
+          <span data-i18n-projects-title>{lang === 'es' ? 'Proyectos' : 'Projects'}</span>
         </h2>
         <Project />
       </div>
@@ -49,7 +49,7 @@ const lang = 'en' as 'en' | 'es';
       <div class="space-y-8">
         <h2 class="flex gap-x-3 text-3xl font-bold">
           <PersonIcon />
-          <span>{lang === 'es' ? 'Sobre mí' : 'About'}</span>
+          <span data-i18n-about-title>{lang === 'es' ? 'Sobre mí' : 'About'}</span>
         </h2>
         <About {lang} />
       </div>
