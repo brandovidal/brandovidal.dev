@@ -1,35 +1,42 @@
 ---
 interface Props {
   name: string;
-  layer: 'frontend' | 'backend' | 'cloud' | 'data';
+  layer: "frontend" | "backend" | "cloud" | "data" | "tool";
 }
 
 const { name, layer } = Astro.props;
 
 const layerConfig = {
   frontend: {
-    bgColor: 'bg-blue-500/20',
-    textColor: 'text-blue-300',
-    borderColor: 'border-blue-500/30',
+    bgColor: "bg-blue-500/20",
+    textColor: "text-blue-300",
+    borderColor: "border-blue-500/30",
   },
   backend: {
-    bgColor: 'bg-emerald-500/20',
-    textColor: 'text-emerald-300',
-    borderColor: 'border-emerald-500/30',
+    bgColor: "bg-emerald-500/20",
+    textColor: "text-emerald-300",
+    borderColor: "border-emerald-500/30",
   },
   cloud: {
-    bgColor: 'bg-amber-500/20',
-    textColor: 'text-amber-300',
-    borderColor: 'border-amber-500/30',
+    bgColor: "bg-amber-500/20",
+    textColor: "text-amber-300",
+    borderColor: "border-amber-500/30",
   },
   data: {
-    bgColor: 'bg-purple-500/20',
-    textColor: 'text-purple-300',
-    borderColor: 'border-purple-500/30',
+    bgColor: "bg-purple-500/20",
+    textColor: "text-purple-300",
+    borderColor: "border-purple-500/30",
+  },
+  tool: {
+    bgColor: "bg-gray-500/20",
+    textColor: "text-gray-300",
+    borderColor: "border-gray-500/30",
   },
 };
 ---
 
-<span class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border ${layerConfig[layer].bgColor} ${layerConfig[layer].textColor} ${layerConfig[layer].borderColor} hover:animate-jiggle animate-duration-400 transition-all`}>
+<span
+  class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border ${layerConfig[layer].bgColor} ${layerConfig[layer].textColor} ${layerConfig[layer].borderColor} hover:animate-jiggle animate-duration-400 transition-all`}
+>
   {name}
 </span>

@@ -15,7 +15,7 @@ interface ExperienceItemData {
   date: string;
   dateKey: string;
   link?: string;
-  layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
+  layers: ("frontend" | "backend" | "cloud" | "data")[];
   technologies: string[];
 }
 
@@ -32,7 +32,18 @@ const EXPERIENCES: ExperienceItemData[] = [
     dateKey: "experience.items.softtek.date",
     link: "https://softtek.com/",
     layers: ["backend", "cloud", "data"],
-    technologies: ["Node.js", "AWS Lambda", "DynamoDB", "Python"],
+    technologies: [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "NestJS",
+      "Python",
+      "DynamoDB",
+      "SQL",
+      "AWS",
+      "Azure",
+      "Github Actions",
+    ],
   },
   {
     title: "Frontend Engineer",
@@ -43,7 +54,18 @@ const EXPERIENCES: ExperienceItemData[] = [
     dateKey: "experience.items.yape.date",
     link: "https://yape.com.pe/",
     layers: ["frontend", "backend"],
-    technologies: ["React", "TypeScript", "Node.js", "Microservices"],
+    technologies: [
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Azure",
+      "Microservices",
+      "Github Actions",
+      "Npm Packages",
+      "Google Maps",
+      "Here Maps",
+    ],
   },
   {
     title: "Fullstack Engineer",
@@ -53,7 +75,16 @@ const EXPERIENCES: ExperienceItemData[] = [
     date: translation.experience.items.samishop.date,
     dateKey: "experience.items.samishop.date",
     layers: ["frontend", "backend", "data"],
-    technologies: ["React", "Express", "PostgreSQL", "Redux"],
+    technologies: [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "NestJS",
+      "MongoDB",
+      "Serverless",
+      "Github Actions",
+    ],
   },
   {
     title: "Data Analyst Engineer",
@@ -64,7 +95,17 @@ const EXPERIENCES: ExperienceItemData[] = [
     dateKey: "experience.items.attachMedia.date",
     link: "https://attachmedia.com/",
     layers: ["data", "backend"],
-    technologies: ["SQL", "Python", "Analytics", "ETL"],
+    technologies: [
+      "JavaScript",
+      "Node.js",
+      "Kotlin",
+      "Python",
+      "SQL",
+      "Analytics",
+      "ETL",
+      "GCP",
+      "Github",
+    ],
   },
   {
     title: "Fullstack Engineer",
@@ -75,26 +116,52 @@ const EXPERIENCES: ExperienceItemData[] = [
     dateKey: "experience.items.repuestock.date",
     link: "https://repuestock.com/",
     layers: ["frontend", "backend", "data"],
-    technologies: ["React", "Node.js", "MongoDB", "AWS"],
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "Node.js",
+      "Kotlin",
+      "SpringBoot",
+      "MongoDB",
+      "PostgreSQL",
+      "AWS",
+      "Github Actions",
+      "Docker",
+    ],
   },
 ];
 ---
 
 <div class="space-y-8">
   {
-    EXPERIENCES.map(({ title, company, description, descriptionKey, date, dateKey, link, layers, technologies }, i) => (
-      <ExperienceItem
-        title={title}
-        company={company}
-        description={description}
-        descriptionKey={descriptionKey}
-        date={date}
-        dateKey={dateKey}
-        link={link}
-        layers={layers}
-        technologies={technologies}
-        index={i}
-      />
-    ))
+    EXPERIENCES.map(
+      (
+        {
+          title,
+          company,
+          description,
+          descriptionKey,
+          date,
+          dateKey,
+          link,
+          layers,
+          technologies,
+        },
+        i,
+      ) => (
+        <ExperienceItem
+          title={title}
+          company={company}
+          description={description}
+          descriptionKey={descriptionKey}
+          date={date}
+          dateKey={dateKey}
+          link={link}
+          layers={layers}
+          technologies={technologies}
+          index={i}
+        />
+      ),
+    )
   }
 </div>
