@@ -1,19 +1,92 @@
 ---
+import StackTree from '../../components/StackTree.astro';
+import { useTranslations } from '../../i18n/translations';
+import type { Language } from '../../stores/langStore';
 
+interface Props {
+  lang?: Language;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<div class="flex flex-col gap-y-4">
-  <p class="text-md md:text-lg max-w-[700px] text-pretty">
-    Desarrollador Fullstack con 5 años de experiencia involucrado en todo el
-    ciclo de vida de un proyecto. Mi especialidad es implementar soluciones de
-    IT usando <span class="text-purple-200/90 mx-1"
-      >Javascript, ReactJS, Node.JS, AWS, Python, Kotlin.</span
-    >
-  </p>
-  <p class="text-md md:text-lg text-pretty leading-relaxed">
-    Me gusta aplicar <span
-      class="text-purple-200/90 mx-1"
-      >buenas practicas, testing y automatizar tareas</span
-    >, me encanta los nuevos retos para seguir mejorando profesionalmente.
-  </p>
+<div class="space-y-8">
+  <div class="space-y-4">
+    <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl" data-i18n-key="about.description1">
+      {t.about.description1}
+    </p>
+    <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl" data-i18n-key="about.description2">
+      {t.about.description2}
+    </p>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-lg font-semibold text-white" data-i18n-key="about.stackProficiency">{t.about.stackProficiency}</h3>
+    <StackTree
+      stacks={[
+        {
+          layer: 'frontend',
+          technologies: [
+            { name: 'React', level: 'proficient' },
+            { name: 'TypeScript', level: 'proficient' },
+            { name: 'Astro', level: 'advanced' },
+            { name: 'Vue', level: 'intermediate' },
+          ],
+        },
+        {
+          layer: 'backend',
+          technologies: [
+            { name: 'Node.js', level: 'proficient' },
+            { name: 'Express', level: 'proficient' },
+            { name: 'Python', level: 'intermediate' },
+            { name: 'Django', level: 'intermediate' },
+          ],
+        },
+        {
+          layer: 'cloud',
+          technologies: [
+            { name: 'AWS', level: 'advanced' },
+            { name: 'Lambda', level: 'proficient' },
+            { name: 'Serverless', level: 'proficient' },
+            { name: 'Docker', level: 'intermediate' },
+          ],
+        },
+        {
+          layer: 'data',
+          technologies: [
+            { name: 'PostgreSQL', level: 'proficient' },
+            { name: 'MongoDB', level: 'intermediate' },
+            { name: 'DynamoDB', level: 'intermediate' },
+            { name: 'Analytics', level: 'intermediate' },
+          ],
+        },
+      ]}
+      {lang}
+    />
+  </div>
+
+  <div
+    class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6"
+  >
+    <h3 class="text-lg font-semibold text-white" data-i18n-key="about.focusAreas">{t.about.focusAreas}</h3>
+    <ul class="space-y-2 text-gray-400 text-sm">
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span data-i18n-key="about.focus1">{t.about.focus1}</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span data-i18n-key="about.focus2">{t.about.focus2}</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span data-i18n-key="about.focus3">{t.about.focus3}</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span data-i18n-key="about.focus4">{t.about.focus4}</span>
+      </li>
+    </ul>
+  </div>
 </div>

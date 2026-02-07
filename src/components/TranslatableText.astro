@@ -1,0 +1,41 @@
+---
+import type { Language } from '../stores/langStore';
+
+interface Props {
+  en: string;
+  es: string;
+  lang?: Language;
+}
+
+const { en, es, lang = 'en' } = Astro.props;
+---
+
+<span data-i18n-key={lang === 'es' ? en : es} data-i18n-en={en} data-i18n-es={es}>
+  {lang === 'es' ? es : en}
+</span>
+
+<script>
+  import { onLanguageChange, getCurrentLanguage } from '../stores/langStore';
+
+  function updateTranslatableText() {
+    const lang = getCurrentLanguage();
+    const elements = document.querySelectorAll('[data-i18n-en]');
+
+    elements.forEach((el) => {
+      const enText = el.getAttribute('data-i18n-en');
+      const esText = el.getAttribute('data-i18n-es');
+
+      if (lang === 'es' && esText) {
+        el.textContent = esText;
+      } else if (enText) {
+        el.textContent = enText;
+      }
+    });
+  }
+
+  // Listen for language changes
+  onLanguageChange(updateTranslatableText);
+
+  // Initial update
+  updateTranslatableText();
+</script>

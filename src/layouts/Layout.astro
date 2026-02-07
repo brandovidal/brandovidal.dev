@@ -3,6 +3,7 @@ import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 
 import "@fontsource-variable/onest";
+import "../styles/tailwind.css";
 
 interface Props {
   title: string;
@@ -22,10 +23,25 @@ const { title, description } = Astro.props;
 
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    {/* Theme initialization - runs before page render to prevent flash */}
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored === 'light' ? 'light' : stored === 'dark' ? 'dark' : prefersDark ? 'dark' : 'light';
+
+        if (theme === 'light') {
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.remove('light');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div
-      class="absolute top-0 z-[-2] min-h-screen w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="absolute top-0 z-[-2] min-h-screen w-full bg-neutral-950 dark:bg-neutral-950 light:bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] light:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.08),rgba(255,255,255,0))]"
     >
     </div>
 
@@ -36,16 +52,16 @@ const { title, description } = Astro.props;
 </html>
 
 <style is:global>
-  /* :root {
-    color-scheme: light dark;
-  } */
   html {
     font-family: "Onest Variable", system-ui, sans-serif;
     scroll-behavior: smooth;
-    background-color: white;
-    color: #0a0a0a;
     background-color: #0a0a0a;
     color: white;
+  }
+
+  html.light {
+    background-color: #fafafa;
+    color: #0a0a0a;
   }
 
   body {

@@ -1,48 +1,58 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
 
-import Resume from "../sections/resume/Resume.astro";
-import Experience from "../sections/experience/Experience.astro";
-import Project from "../sections/project/Project.astro";
-import About from "../sections/about/About.astro";
+import Resume from '../sections/resume/Resume.astro';
+import Experience from '../sections/experience/Experience.astro';
+import Project from '../sections/project/Project.astro';
+import About from '../sections/about/About.astro';
 
-import SectionContainer from "../components/SectionContainer.astro";
+import SectionContainer from '../components/SectionContainer.astro';
 
-import GitMergeIcon from "../icons/GitMergeIcon.astro";
-import CodeIcon from "../icons/CodeIcon.astro";
-import PersonIcon from "../icons/PersonIcon.astro";
+import GitMergeIcon from '../icons/GitMergeIcon.astro';
+import CodeIcon from '../icons/CodeIcon.astro';
+import PersonIcon from '../icons/PersonIcon.astro';
+
+// Default to English - language will be managed client-side
+const lang = 'en' as 'en' | 'es';
 ---
 
 <Layout
   title="Brando Vidal - AWS Developer Associate | Fullstack Developer"
   description="Contacta conmigo para desarrollar tu idea."
 >
-  <main class="px-4 sm:px-8">
-    <SectionContainer id="resume" class="py-32">
-      <Resume />
+  <main>
+    <SectionContainer id="resume">
+      <Resume lang={lang} />
     </SectionContainer>
 
     <SectionContainer id="experience">
-      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
-        <GitMergeIcon />
-        Experiencia Laboral
-      </h2>
-      <Experience />
+      <div class="space-y-8">
+        <h2 class="flex gap-x-3 text-3xl font-bold">
+          <GitMergeIcon />
+          <span data-i18n-experience-title>{lang === 'es' ? 'Experiencia' : 'Experience'}</span>
+        </h2>
+        <Experience />
+      </div>
     </SectionContainer>
-    <SectionContainer id="projects">
-      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
-        <CodeIcon />
-        Proyectos
-      </h2>
-      <Project />
-    </SectionContainer>
-    <SectionContainer id="about-me">
-      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
-        <PersonIcon />
-        Sobre mi
-      </h2>
 
-      <About />
+    <SectionContainer id="projects">
+      <div class="space-y-8">
+        <h2 class="flex gap-x-3 text-3xl font-bold">
+          <CodeIcon />
+          <span data-i18n-projects-title>{lang === 'es' ? 'Proyectos' : 'Projects'}</span>
+        </h2>
+        <Project />
+      </div>
+    </SectionContainer>
+
+    <SectionContainer id="about-me">
+      <div class="space-y-8">
+        <h2 class="flex gap-x-3 text-3xl font-bold">
+          <PersonIcon />
+          <span data-i18n-about-title>{lang === 'es' ? 'Sobre mí' : 'About'}</span>
+        </h2>
+        <About {lang} />
+      </div>
     </SectionContainer>
   </main>
 </Layout>

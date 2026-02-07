@@ -1,7 +1,17 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
 
-const EXPERIENCES = [
+interface ExperienceItem {
+  title: string;
+  description: string;
+  company: string;
+  date: string;
+  link?: string;
+  layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
+  technologies: string[];
+}
+
+const EXPERIENCES: ExperienceItem[] = [
   {
     title: "Backend Engineer",
     description:
@@ -9,6 +19,8 @@ const EXPERIENCES = [
     company: "Softtek",
     date: "Dic 2024 - Actualmente",
     link: "https://softtek.com/",
+    layers: ["backend", "cloud", "data"],
+    technologies: ["Node.js", "AWS Lambda", "DynamoDB", "Python"],
   },
   {
     title: "Frontend Engineer",
@@ -17,6 +29,8 @@ const EXPERIENCES = [
     company: "Yape",
     date: "Jul 2024 - Nov 2024",
     link: "https://yape.com.pe/",
+    layers: ["frontend", "backend"],
+    technologies: ["React", "TypeScript", "Node.js", "Microservices"],
   },
   {
     title: "Fullstack Engineer",
@@ -24,6 +38,8 @@ const EXPERIENCES = [
     description:
       "Constantemente desarrollaba funcionalidades bajo demanda en el mundo ecommerce, siempre focalizado en mejorar la experiencia del usuario final.",
     date: "Sep 2022 - Jun 2024",
+    layers: ["frontend", "backend", "data"],
+    technologies: ["React", "Express", "PostgreSQL", "Redux"],
   },
   {
     title: "Data Analyst Engineer",
@@ -32,6 +48,8 @@ const EXPERIENCES = [
       "Uso datos masivos para implementar mejoras estrategias de marketing y crecimiento de la marca.",
     date: "Mar 2021 - Ago 2022",
     link: "https://attachmedia.com/",
+    layers: ["data", "backend"],
+    technologies: ["SQL", "Python", "Analytics", "ETL"],
   },
   {
     title: "Fullstack Engineer",
@@ -40,22 +58,24 @@ const EXPERIENCES = [
       "Digitalizar el comercio de autopartes desarrollando la tienda online y su administrador.",
     date: "Ago 2019 - Mar 2021",
     link: "https://repuestock.com/",
+    layers: ["frontend", "backend", "data"],
+    technologies: ["React", "Node.js", "MongoDB", "AWS"],
   },
 ];
 ---
 
-<ol class="relative border-s border-gray-700 ml-3">
+<div class="space-y-8">
   {
-    EXPERIENCES.map(({ title, company, description, date, link }) => (
-      <li class="flex flex-col gap-y-1 mb-10 ms-4 md:ms-6">
-        <ExperienceItem
-          title={title}
-          company={company}
-          description={description}
-          date={date}
-          link={link}
-        />
-      </li>
+    EXPERIENCES.map(({ title, company, description, date, link, layers, technologies }) => (
+      <ExperienceItem
+        title={title}
+        company={company}
+        description={description}
+        date={date}
+        link={link}
+        layers={layers}
+        technologies={technologies}
+      />
     ))
   }
-</ol>
+</div>

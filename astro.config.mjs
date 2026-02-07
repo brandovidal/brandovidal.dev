@@ -1,10 +1,6 @@
 import { defineConfig } from 'astro/config';
 
-import tailwind from "@astrojs/tailwind";
-
-import webVitals from "@astrojs/web-vitals";
-
-import db from "@astrojs/db";
+import tailwindcss from '@tailwindcss/vite';
 
 import cloudflare from '@astrojs/cloudflare';
 
@@ -13,7 +9,10 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://brandovidal.dev',
-  integrations: [tailwind(), webVitals(), db(), sitemap()],
+  integrations: [sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   output: 'static',
   adapter: cloudflare({
     imageService: 'cloudflare'

@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Configure content sources - scans all files in src/ directory */
+@source "./src";
+
+/* Configure dark mode (class-based) */
+@theme {
+  --color-scheme: light dark;
+
+  /* Layer colors - the flow state stack (SAME IN BOTH THEMES) */
+  --color-layer-frontend: #3B82F6;
+  --color-layer-frontend-light: #60A5FA;
+  --color-layer-backend: #10B981;
+  --color-layer-backend-light: #34D399;
+  --color-layer-cloud: #FF9900;
+  --color-layer-cloud-light: #FFB84D;
+  --color-layer-data: #8B5CF6;
+  --color-layer-data-light: #A78BFA;
+
+  /* Base surfaces - dark mode */
+  --color-surface-base: #0a0a0a;
+  --color-surface-raised: #141414;
+  --color-surface-overlay: #1a1a1a;
+
+  /* Borders - dark mode */
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-layer: rgba(255, 255, 255, 0.08);
+
+  /* Text hierarchy - dark mode */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-tertiary: rgba(255, 255, 255, 0.5);
+
+  /* Interactive states - dark mode */
+  --color-interactive-hover: rgba(255, 255, 255, 0.05);
+  --color-interactive-active: rgba(255, 255, 255, 0.1);
+}
+
+/* Light mode overrides */
+:root.light {
+  /* Surfaces - light mode */
+  --color-surface-base: #fafafa;
+  --color-surface-raised: #ffffff;
+  --color-surface-overlay: #f5f5f5;
+
+  /* Borders - light mode */
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-layer: rgba(0, 0, 0, 0.12);
+
+  /* Text hierarchy - light mode */
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: rgba(0, 0, 0, 0.7);
+  --color-text-tertiary: rgba(0, 0, 0, 0.5);
+
+  /* Interactive states - light mode */
+  --color-interactive-hover: rgba(0, 0, 0, 0.05);
+  --color-interactive-active: rgba(0, 0, 0, 0.1);
+
+  /* Gradient overlay for light mode */
+  --gradient-overlay: rgba(120, 119, 198, 0.08);
+}
+
+/* Enable dark mode variant */
+@variant dark (&:where(.dark, .dark *));
+
+/* Flow animations */
+@keyframes flow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes flow-gradient {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}

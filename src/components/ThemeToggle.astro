@@ -1,0 +1,43 @@
+---
+// Theme toggle component with terminal aesthetic
+---
+
+<button
+  id="theme-toggle"
+  class="font-mono text-xs border border-white/10 rounded bg-white/[0.02] backdrop-blur-sm px-3 py-1.5 hover:bg-white/5 transition-colors duration-300 text-gray-400 hover:text-white"
+  aria-label="Toggle theme"
+>
+  <span class="inline-block">$ theme <span id="theme-label" class="text-amber-400">dark</span></span>
+</button>
+
+<script>
+  import { initTheme, setTheme, getCurrentTheme, onThemeChange } from '../stores/themeStore';
+
+  // Initialize theme on page load
+  initTheme();
+
+  // Update label based on current theme
+  function updateLabel() {
+    const current = getCurrentTheme();
+    const label = document.getElementById('theme-label');
+    if (label) {
+      label.textContent = current;
+      label.className = current === 'dark' ? 'text-amber-400' : 'text-blue-400';
+    }
+  }
+
+  // Listen for theme changes
+  onThemeChange(updateLabel);
+
+  // Handle click
+  const toggle = document.getElementById('theme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const current = getCurrentTheme();
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // Initial label update
+  updateLabel();
+</script>

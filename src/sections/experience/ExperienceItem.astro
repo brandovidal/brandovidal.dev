@@ -1,55 +1,64 @@
 ---
+import FlowIndicator from "../../components/FlowIndicator.astro";
+import LayerBadge from "../../components/LayerBadge.astro";
+
 interface Props {
   title: string;
   company: string;
   description: string;
   date: string;
   link?: string;
+  layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
+  technologies: string[];
 }
-const { title, company, description, date, link } = Astro.props;
+const { title, company, description, date, link, layers, technologies } = Astro.props;
 ---
 
-<div
-  class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-purple-500 bg-purple-400"
->
-</div>
-<time
-  class="text-sm font-normal leading-none text-gray-500 mt-1"
-  >{date}
-</time>
-<h3 class="text-lg font-semibold text-purple-300/80">
-  {title}
-</h3>
-<h5 class="text-lg font-medium text-gray-300">
-  {company}
-</h5>
-<p class="mb-0 text-base font-normal text-gray-400 text-pretty">
-  {description}
-</p>
-{
-  link && (
-    <a
-      href={link}
-      class="inline-flex w-24 py-3 text-sm font-normal underline text-purple-200 hover:text-purple-400 transition-colors duration-300"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Saber m&aacute;s{" "}
-      <svg
-        class="w-3 h-3 ms-2 rtl:rotate-180"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 14 10"
+<article class="border border-white/10 rounded-lg bg-white/[0.02] backdrop-blur-sm p-6 hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300">
+  <div class="flex flex-col gap-4">
+    {/* Date and title */}
+    <div>
+      <time class="text-xs font-mono text-gray-500 uppercase tracking-wider">{date}</time>
+      <h3 class="text-xl font-semibold text-white mt-2">{title}</h3>
+      <a
+        href={link || '#'}
+        class="text-base font-medium text-gray-400 hover:text-white transition-colors inline-block"
+        target={link ? '_blank' : undefined}
+        rel={link ? 'noopener noreferrer' : undefined}
       >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M1 5h12m0 0L9 1m4 4L9 9"
-        />
-      </svg>
-    </a>
-  )
-}
+        {company}
+      </a>
+    </div>
+
+    {/* Flow indicators */}
+    <div class="flex flex-wrap gap-2">
+      <FlowIndicator layers={layers} />
+    </div>
+
+    {/* Description */}
+    <p class="text-sm text-gray-400 leading-relaxed text-pretty">
+      {description}
+    </p>
+
+    {/* Technologies by layer */}
+    <div class="flex flex-wrap gap-2 pt-2">
+      {
+        technologies.map((tech) => {
+          let layer: 'frontend' | 'backend' | 'cloud' | 'data' = 'backend';
+          if (
+            ['React', 'Vue', 'Angular', 'TypeScript', 'CSS', 'HTML', 'Astro', 'Next.js'].includes(tech)
+          ) {
+            layer = 'frontend';
+          } else if (['Node.js', 'Express', 'Python', 'Django', 'FastAPI'].includes(tech)) {
+            layer = 'backend';
+          } else if (['AWS', 'Lambda', 'Serverless', 'Microservices'].includes(tech)) {
+            layer = 'cloud';
+          } else if (['PostgreSQL', 'MongoDB', 'DynamoDB', 'SQL', 'Analytics', 'ETL'].includes(tech)) {
+            layer = 'data';
+          }
+          return <LayerBadge name={tech} layer={layer} />;
+        })
+      }
+    </div>
+  </div>
+</article>
