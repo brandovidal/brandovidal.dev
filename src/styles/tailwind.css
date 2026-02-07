@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Configure content sources - scans all files in src/ directory */
+@source "./src";
+
+/* Configure dark mode (class-based) */
+@theme {
+  --color-scheme: light dark;
+}
+
+/* Enable dark mode variant */
+@variant dark (&:where(.dark, .dark *));
