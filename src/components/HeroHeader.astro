@@ -1,0 +1,40 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  lang?: 'es' | 'en';
+}
+
+const { name, role } = Astro.props;
+
+const layers = [
+  { name: 'Frontend', color: 'bg-blue-500/20 border-blue-500/30 text-blue-400' },
+  { name: 'Backend', color: 'bg-emerald-500/20 border-emerald-500/30 text-emerald-400' },
+  { name: 'Cloud', color: 'bg-amber-500/20 border-amber-500/30 text-amber-400' },
+  { name: 'Data', color: 'bg-purple-500/20 border-purple-500/30 text-purple-400' },
+];
+---
+
+<div class="py-8 space-y-6 animate-fade-in-up">
+  {/* Hero Name with Gradient and Glow */}
+  <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-400 via-emerald-400 via-amber-400 to-purple-500 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(139,92,246,0.5)]">
+    {name}
+  </h1>
+
+  {/* Decorative underline */}
+  <div class="w-32 h-1 bg-gradient-to-r from-blue-400 via-emerald-400 via-amber-400 to-purple-500 rounded-full opacity-60"></div>
+
+  {/* Role */}
+  <p class="text-base md:text-lg text-gray-300 max-w-2xl">
+    {role}
+  </p>
+
+  {/* Layer Badges */}
+  <div class="flex flex-wrap gap-2 pt-2">
+    {layers.map((layer, i) => (
+      <span class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border ${layer.color} hover:animate-jiggle animate-duration-300 transition-all`} style={`animation-delay: ${i * 100}ms`}>
+        {layer.name}
+      </span>
+    ))}
+  </div>
+</div>

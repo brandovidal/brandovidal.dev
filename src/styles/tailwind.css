@@ -17,14 +17,16 @@
   --color-layer-data: #8B5CF6;
   --color-layer-data-light: #A78BFA;
 
-  /* Base surfaces - dark mode */
-  --color-surface-base: #0a0a0a;
-  --color-surface-raised: #141414;
-  --color-surface-overlay: #1a1a1a;
+  /* Base surfaces - dark mode with purple undertones */
+  --color-surface-base: #0a0a0f;
+  --color-surface-raised: #141418;
+  --color-surface-overlay: #1a1a22;
+  --color-surface-card: #1f1f2a;
 
-  /* Borders - dark mode */
-  --color-border-subtle: rgba(255, 255, 255, 0.05);
-  --color-border-layer: rgba(255, 255, 255, 0.08);
+  /* Borders - dark mode with purple tint */
+  --color-border-subtle: rgba(139, 92, 246, 0.08);
+  --color-border-layer: rgba(139, 92, 246, 0.12);
+  --color-border-strong: rgba(139, 92, 246, 0.20);
 
   /* Text hierarchy - dark mode */
   --color-text-primary: #ffffff;
@@ -34,6 +36,10 @@
   /* Interactive states - dark mode */
   --color-interactive-hover: rgba(255, 255, 255, 0.05);
   --color-interactive-active: rgba(255, 255, 255, 0.1);
+
+  /* Purple accent tones - dark mode */
+  --color-purple-glow: rgba(139, 92, 246, 0.15);
+  --color-purple-glow-strong: rgba(139, 92, 246, 0.25);
 }
 
 /* Light mode overrides */
@@ -42,10 +48,12 @@
   --color-surface-base: #fafafa;
   --color-surface-raised: #ffffff;
   --color-surface-overlay: #f5f5f5;
+  --color-surface-card: #f0f0f0;
 
-  /* Borders - light mode */
-  --color-border-subtle: rgba(0, 0, 0, 0.08);
-  --color-border-layer: rgba(0, 0, 0, 0.12);
+  /* Borders - light mode with subtle purple tint */
+  --color-border-subtle: rgba(139, 92, 246, 0.06);
+  --color-border-layer: rgba(139, 92, 246, 0.10);
+  --color-border-strong: rgba(139, 92, 246, 0.15);
 
   /* Text hierarchy - light mode */
   --color-text-primary: #0a0a0a;
@@ -58,6 +66,10 @@
 
   /* Gradient overlay for light mode */
   --gradient-overlay: rgba(120, 119, 198, 0.08);
+
+  /* Purple accent tones - light mode */
+  --color-purple-glow: rgba(139, 92, 246, 0.05);
+  --color-purple-glow-strong: rgba(139, 92, 246, 0.12);
 }
 
 /* Enable dark mode variant */

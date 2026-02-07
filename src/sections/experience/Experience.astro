@@ -1,33 +1,46 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import { useTranslations } from "../../i18n/translations";
+import type { Language } from "../../stores/langStore";
 
-interface ExperienceItem {
+interface Props {
+  lang?: Language;
+}
+
+interface ExperienceItemData {
   title: string;
   description: string;
+  descriptionKey: string;
   company: string;
   date: string;
+  dateKey: string;
   link?: string;
   layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
   technologies: string[];
 }
 
-const EXPERIENCES: ExperienceItem[] = [
+const { lang = "en" } = Astro.props;
+const translation = useTranslations(lang);
+
+const EXPERIENCES: ExperienceItemData[] = [
   {
     title: "Backend Engineer",
-    description:
-      "Desarrollo de diferentes iniciativas para una de las aseguradoras de seguros Rimac, lideres en el mercado peruano.",
+    description: translation.experience.items.softtek.description,
+    descriptionKey: "experience.items.softtek.description",
     company: "Softtek",
-    date: "Dic 2024 - Actualmente",
+    date: translation.experience.items.softtek.date,
+    dateKey: "experience.items.softtek.date",
     link: "https://softtek.com/",
     layers: ["backend", "cloud", "data"],
     technologies: ["Node.js", "AWS Lambda", "DynamoDB", "Python"],
   },
   {
     title: "Frontend Engineer",
-    description:
-      "Abordo proyectos transversales dia a dia, para lograr la mejor arquitectura moderna, escalable y mantenible.",
+    description: translation.experience.items.yape.description,
+    descriptionKey: "experience.items.yape.description",
     company: "Yape",
-    date: "Jul 2024 - Nov 2024",
+    date: translation.experience.items.yape.date,
+    dateKey: "experience.items.yape.date",
     link: "https://yape.com.pe/",
     layers: ["frontend", "backend"],
     technologies: ["React", "TypeScript", "Node.js", "Microservices"],
@@ -35,18 +48,20 @@ const EXPERIENCES: ExperienceItem[] = [
   {
     title: "Fullstack Engineer",
     company: "Samishop",
-    description:
-      "Constantemente desarrollaba funcionalidades bajo demanda en el mundo ecommerce, siempre focalizado en mejorar la experiencia del usuario final.",
-    date: "Sep 2022 - Jun 2024",
+    description: translation.experience.items.samishop.description,
+    descriptionKey: "experience.items.samishop.description",
+    date: translation.experience.items.samishop.date,
+    dateKey: "experience.items.samishop.date",
     layers: ["frontend", "backend", "data"],
     technologies: ["React", "Express", "PostgreSQL", "Redux"],
   },
   {
     title: "Data Analyst Engineer",
     company: "Attach Media",
-    description:
-      "Uso datos masivos para implementar mejoras estrategias de marketing y crecimiento de la marca.",
-    date: "Mar 2021 - Ago 2022",
+    description: translation.experience.items.attachMedia.description,
+    descriptionKey: "experience.items.attachMedia.description",
+    date: translation.experience.items.attachMedia.date,
+    dateKey: "experience.items.attachMedia.date",
     link: "https://attachmedia.com/",
     layers: ["data", "backend"],
     technologies: ["SQL", "Python", "Analytics", "ETL"],
@@ -54,9 +69,10 @@ const EXPERIENCES: ExperienceItem[] = [
   {
     title: "Fullstack Engineer",
     company: "Repuestock",
-    description:
-      "Digitalizar el comercio de autopartes desarrollando la tienda online y su administrador.",
-    date: "Ago 2019 - Mar 2021",
+    description: translation.experience.items.repuestock.description,
+    descriptionKey: "experience.items.repuestock.description",
+    date: translation.experience.items.repuestock.date,
+    dateKey: "experience.items.repuestock.date",
     link: "https://repuestock.com/",
     layers: ["frontend", "backend", "data"],
     technologies: ["React", "Node.js", "MongoDB", "AWS"],
@@ -66,15 +82,18 @@ const EXPERIENCES: ExperienceItem[] = [
 
 <div class="space-y-8">
   {
-    EXPERIENCES.map(({ title, company, description, date, link, layers, technologies }) => (
+    EXPERIENCES.map(({ title, company, description, descriptionKey, date, dateKey, link, layers, technologies }, i) => (
       <ExperienceItem
         title={title}
         company={company}
         description={description}
+        descriptionKey={descriptionKey}
         date={date}
+        dateKey={dateKey}
         link={link}
         layers={layers}
         technologies={technologies}
+        index={i}
       />
     ))
   }
