@@ -1,19 +1,68 @@
 ---
-
+import StackVisualization from "../../components/StackVisualization.astro";
 ---
 
-<div class="flex flex-col gap-y-4">
-  <p class="text-md md:text-lg max-w-[700px] text-pretty">
-    Desarrollador Fullstack con 5 años de experiencia involucrado en todo el
-    ciclo de vida de un proyecto. Mi especialidad es implementar soluciones de
-    IT usando <span class="text-purple-200/90 mx-1"
-      >Javascript, ReactJS, Node.JS, AWS, Python, Kotlin.</span
-    >
-  </p>
-  <p class="text-md md:text-lg text-pretty leading-relaxed">
-    Me gusta aplicar <span
-      class="text-purple-200/90 mx-1"
-      >buenas practicas, testing y automatizar tareas</span
-    >, me encanta los nuevos retos para seguir mejorando profesionalmente.
-  </p>
+<div class="space-y-8">
+  <div class="space-y-4">
+    <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
+      Fullstack developer with 5+ years of experience across the entire project lifecycle. I specialize in building scalable solutions that seamlessly integrate frontend, backend, cloud infrastructure, and data systems.
+    </p>
+    <p class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
+      I'm passionate about best practices, testing, automation, and solving complex technical challenges. Always excited to learn new technologies and improve professionally.
+    </p>
+  </div>
+
+  <div class="space-y-4">
+    <h3 class="text-lg font-semibold text-white">Stack Proficiency</h3>
+    <StackVisualization
+      stacks={[
+        {
+          layer: "frontend",
+          label: "Frontend",
+          technologies: ["React", "TypeScript", "Astro", "Vue"],
+          coverage: 95,
+        },
+        {
+          layer: "backend",
+          label: "Backend",
+          technologies: ["Node.js", "Express", "Python", "Django"],
+          coverage: 90,
+        },
+        {
+          layer: "cloud",
+          label: "Cloud",
+          technologies: ["AWS", "Lambda", "Serverless", "Docker"],
+          coverage: 85,
+        },
+        {
+          layer: "data",
+          label: "Data",
+          technologies: ["PostgreSQL", "MongoDB", "DynamoDB", "Analytics"],
+          coverage: 80,
+        },
+      ]}
+    />
+  </div>
+
+  <div class="space-y-3 bg-white/[0.02] border border-white/10 rounded-lg p-6">
+    <h3 class="text-lg font-semibold text-white">Focus Areas</h3>
+    <ul class="space-y-2 text-gray-400 text-sm">
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span>Clean, maintainable code with emphasis on architecture patterns</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span>Comprehensive testing and quality assurance practices</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span>Automation and developer experience improvements</span>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-emerald-400 mt-0.5">→</span>
+        <span>Building systems that scale across all layers</span>
+      </li>
+    </ul>
+  </div>
 </div>

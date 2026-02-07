@@ -1,0 +1,64 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  experience: string;
+  availability: 'available' | 'unavailable';
+}
+
+const { name, role, experience, availability } = Astro.props;
+---
+
+<div class="border border-white/10 rounded-lg bg-white/[0.02] backdrop-blur-sm overflow-hidden mb-8">
+  {/* Terminal header */}
+  <div class="bg-gradient-to-r from-blue-500/20 to-orange-500/20 border-b border-white/5 px-4 py-3 flex items-center gap-2">
+    <div class="flex gap-2">
+      <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+      <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+      <div class="w-3 h-3 rounded-full bg-emerald-500/50"></div>
+    </div>
+    <span class="text-xs text-gray-400 ml-2">SYSTEM.USER</span>
+  </div>
+
+  {/* Terminal content */}
+  <div class="p-6 font-mono text-sm">
+    <div class="mb-4 text-gray-400">
+      <span class="text-emerald-400">$</span> whoami
+    </div>
+    <div class="mb-6 text-white">
+      <span class="text-emerald-400">></span> {name}
+    </div>
+
+    <div class="mb-4 text-gray-400">
+      <span class="text-emerald-400">$</span> cat role.txt
+    </div>
+    <div class="mb-6 text-white">
+      <span class="text-emerald-400">></span> {role}
+    </div>
+
+    <div class="mb-4 text-gray-400">
+      <span class="text-emerald-400">$</span> uptime
+    </div>
+    <div class="mb-6 text-white">
+      <span class="text-emerald-400">></span> {experience}
+    </div>
+
+    <div class="mb-4 text-gray-400">
+      <span class="text-emerald-400">$</span> status
+    </div>
+    <div class="text-white">
+      <span class="text-emerald-400">></span>
+      {availability === 'available' ? (
+        <span class="ml-1 inline-flex items-center gap-1">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-emerald-400">[AVAILABLE FOR WORK]</span>
+        </span>
+      ) : (
+        <span class="ml-1 inline-flex items-center gap-1">
+          <span class="inline-block w-2 h-2 rounded-full bg-gray-600"></span>
+          <span class="text-gray-500">[NOT AVAILABLE]</span>
+        </span>
+      )}
+    </div>
+  </div>
+</div>

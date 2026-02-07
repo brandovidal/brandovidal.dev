@@ -1,0 +1,45 @@
+---
+interface Props {
+  layers: ('frontend' | 'backend' | 'cloud' | 'data')[];
+}
+
+const { layers } = Astro.props;
+
+const layerConfig = {
+  frontend: {
+    label: 'UI',
+    color: 'bg-blue-500',
+    colorGrad: 'from-blue-500 to-blue-400',
+  },
+  backend: {
+    label: 'Backend',
+    color: 'bg-emerald-500',
+    colorGrad: 'from-emerald-500 to-emerald-400',
+  },
+  cloud: {
+    label: 'Cloud',
+    color: 'bg-amber-500',
+    colorGrad: 'from-amber-500 to-amber-400',
+  },
+  data: {
+    label: 'Data',
+    color: 'bg-purple-500',
+    colorGrad: 'from-purple-500 to-purple-400',
+  },
+};
+---
+
+<div class="flex items-center gap-2">
+  {
+    layers.map((layer, index) => (
+      <div class="flex items-center gap-2">
+        <div class={`px-2 py-1 rounded text-xs font-medium text-white ${layerConfig[layer].color}`}>
+          {layerConfig[layer].label}
+        </div>
+        {index < layers.length - 1 && (
+          <div class="text-gray-500">→</div>
+        )}
+      </div>
+    ))
+  }
+</div>

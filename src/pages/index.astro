@@ -17,32 +17,39 @@ import PersonIcon from "../icons/PersonIcon.astro";
   title="Brando Vidal - AWS Developer Associate | Fullstack Developer"
   description="Contacta conmigo para desarrollar tu idea."
 >
-  <main class="px-4 sm:px-8">
-    <SectionContainer id="resume" class="py-32">
+  <main>
+    <SectionContainer id="resume">
       <Resume />
     </SectionContainer>
 
     <SectionContainer id="experience">
-      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
-        <GitMergeIcon />
-        Experiencia Laboral
-      </h2>
-      <Experience />
+      <div class="space-y-8">
+        <h2 class="flex gap-x-3 text-3xl font-bold">
+          <GitMergeIcon />
+          <span>Experience</span>
+        </h2>
+        <Experience />
+      </div>
     </SectionContainer>
-    <SectionContainer id="projects">
-      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
-        <CodeIcon />
-        Proyectos
-      </h2>
-      <Project />
-    </SectionContainer>
-    <SectionContainer id="about-me">
-      <h2 class="flex gap-x-2 text-2xl font-bold mb-6">
-        <PersonIcon />
-        Sobre mi
-      </h2>
 
-      <About />
+    <SectionContainer id="projects">
+      <div class="space-y-8">
+        <h2 class="flex gap-x-3 text-3xl font-bold">
+          <CodeIcon />
+          <span>Projects</span>
+        </h2>
+        <Project />
+      </div>
+    </SectionContainer>
+
+    <SectionContainer id="about-me">
+      <div class="space-y-8">
+        <h2 class="flex gap-x-3 text-3xl font-bold">
+          <PersonIcon />
+          <span>About</span>
+        </h2>
+        <About />
+      </div>
     </SectionContainer>
   </main>
 </Layout>
