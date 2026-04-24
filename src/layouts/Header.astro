@@ -5,7 +5,9 @@ import LanguageToggle from "../components/LanguageToggle.astro";
 <header class="sticky top-0 z-10 w-full">
   {/* Progress bar indicating scroll through layers */}
   <div
-    class="h-1 bg-linear-to-r from-blue-500 via-emerald-500 to-purple-500 opacity-0 hover:opacity-100 transition-opacity duration-300"
+    id="scroll-progress"
+    class="h-0.5 bg-linear-to-r from-blue-500 via-emerald-500 to-purple-500 origin-left transition-transform duration-150"
+    style="transform: scaleX(0)"
   >
   </div>
 
@@ -59,3 +61,24 @@ import LanguageToggle from "../components/LanguageToggle.astro";
     </div>
   </div>
 </header>
+
+<script>
+  const bar = document.getElementById("scroll-progress") as HTMLElement | null;
+  if (bar) {
+    const update = () => {
+      console.log(
+        "scrolling...",
+        window.scrollY,
+        document.documentElement.scrollHeight,
+        window.innerHeight,
+      );
+      const scrolled =
+        window.scrollY /
+        (document.documentElement.scrollHeight - window.innerHeight);
+      console.log({ scrolled });
+      bar.style.transform = `scaleX(${Math.min(scrolled, 1)})`;
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+</script>

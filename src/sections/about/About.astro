@@ -13,7 +13,7 @@ const translation = useTranslations(lang);
 ---
 
 <div class="space-y-8">
-  <div class="space-y-4">
+  <div data-reveal class="space-y-4">
     <p
       class="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl"
       data-i18n-key="about.description1"
@@ -28,7 +28,7 @@ const translation = useTranslations(lang);
     </p>
   </div>
 
-  <div class="space-y-4">
+  <div data-reveal style="transition-delay: 80ms" class="space-y-4">
     <h3
       class="text-lg font-semibold text-white"
       data-i18n-key="about.stackProficiency"
@@ -91,6 +91,7 @@ const translation = useTranslations(lang);
     />
   </div>
 
+  <div data-reveal style="transition-delay: 160ms">
   <Card class="p-6">
     <div class="space-y-3">
       <h3
@@ -119,4 +120,5 @@ const translation = useTranslations(lang);
       </ul>
     </div>
   </Card>
+  </div>
 </div>
