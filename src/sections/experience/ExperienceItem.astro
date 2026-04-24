@@ -27,11 +27,20 @@ const {
   technologies,
   index = 0,
 } = Astro.props;
+
+const primaryLayer = layers[0] ?? 'frontend';
+const layerAccentClass: Record<string, string> = {
+  frontend: 'border-l-2 border-l-blue-500/60',
+  backend: 'border-l-2 border-l-emerald-500/60',
+  cloud: 'border-l-2 border-l-amber-500/60',
+  data: 'border-l-2 border-l-purple-500/60',
+};
+const accentClass = layerAccentClass[primaryLayer] ?? layerAccentClass.frontend;
 ---
 
+<div data-reveal style={`transition-delay: ${index * 80}ms`}>
 <Card
-  class="p-6 animate-fade-in-up"
-  style={`animation-delay: ${index * 100}ms`}
+  class={`p-6 ${accentClass}`}
 >
   <article class="flex flex-col gap-4">
     {/* Date and title */}
@@ -129,3 +138,4 @@ const {
     </div>
   </article>
 </Card>
+</div>
