@@ -66,16 +66,9 @@ import LanguageToggle from "../components/LanguageToggle.astro";
   const bar = document.getElementById("scroll-progress") as HTMLElement | null;
   if (bar) {
     const update = () => {
-      console.log(
-        "scrolling...",
-        window.scrollY,
-        document.documentElement.scrollHeight,
-        window.innerHeight,
-      );
       const scrolled =
         window.scrollY /
         (document.documentElement.scrollHeight - window.innerHeight);
-      console.log({ scrolled });
       bar.style.transform = `scaleX(${Math.min(scrolled, 1)})`;
     };
     window.addEventListener("scroll", update, { passive: true });
